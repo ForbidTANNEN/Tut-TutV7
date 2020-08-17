@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p>User: <%=pair.userObj.username%></p>
+    <p>Age: <%=pair.userObj.age%></p>
+    <p>Subject: <%=pair.msgObj.subject%></p>
+    <p>About Them: <%=pair.msgObj.aboutYourself%></p>
+    <p>Previous Learnings: <%=pair.msgObj.previousLearning%></p>
+    <p>What Help: <%=pair.msgObj.whatHelp%></p>
+    <p>Requested Time: <%=pair.msgObj.time%></p>
+    <p>Message Send Time: <%=pair.msgObj.mssgSendTime%></p>
+    <form action="/acceptTutor" method="post">
+      <%if(pair.msgObj.status === "Pending"){%>
+        <input type="text" name="vcLink" placeholder="VC Link">
+        <button type="submit" name="accept" value="<%=pair.msgObj._id%>">Accept</button>
+      <%}%>
+      <%if(pair.msgObj.status === "Accepted"){%>
+        <p>Accepted</p>
+      <%}%>
+      <input type="hidden" name="email" value="<%=pair.userObj.username%>">
+    </form>
+    <a href="./tutorRequestsView">Back</a>
+  </body>
+</html>

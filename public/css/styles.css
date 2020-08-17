@@ -1,0 +1,315 @@
+body{
+  padding-top: 80px;
+}
+
+.container-fluid{
+  padding: 0;
+}
+
+.btn-primary{
+  background-color: #f73859;
+  border: none;
+}
+
+.navbar{
+  height: 10%;
+  border-bottom: 1px solid #e9eaea;
+}
+
+.logo{
+  margin-right: 15px;
+}
+
+.navbar-nav > li{
+  padding-left:20px;
+  padding-right:20px;
+}
+
+.navbar-brand{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+}
+
+.floatingNav {
+  box-shadow: 0px 1px 10px #999;
+}
+
+.slogan{
+  text-align: center;
+  font-size: 3rem;
+  margin: 3% 0;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: .15rem;
+
+}
+
+.half-width-img{
+  width: 50%;
+  height: auto;
+  float: left;
+
+}
+.half-width-img1{
+  width: 50%;
+  height: auto;
+}
+
+.tint {
+  position: relative;
+  float: left;
+  cursor: pointer;
+}
+
+.tint:before {
+    background: none;
+}
+
+.tint:hover:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,255,255, 0.5);
+  transition: background .3s linear;
+}
+
+.bg-light{
+  background-color: #fff!important;
+}
+
+.imgBut{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+@media only screen and (min-width: 768px)
+.homepage-signup__button {
+    width: 200px;
+    bottom: 3rem;
+    margin-left: calc(50% - 100px);
+}
+
+.homepage-signup__button {
+    position: absolute;
+    top: 100%;
+    left: 20%;
+}
+
+.homepage-signup__button2 {
+    position: absolute;
+    top: 100%;
+    left: 75%;
+}
+
+.overlay{
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  background-color: #f73859;
+  opacity: 0;
+}
+
+.overlay1{
+  position: absolute;
+  left: 50%;
+  height: 100%;
+  width: 50%;
+  background-color: #f73859;
+  opacity: 0;
+}
+
+.overlay:hover {
+    opacity: .8;
+    transition: opacity .25s ease-in-out;
+-moz-transition: opacity .25s ease-in-out;
+-webkit-transition: opacity .25s ease-in-out;
+}
+.overlay1:hover {
+    opacity: .8;
+    transition: opacity .25s ease-in-out;
+-moz-transition: opacity .25s ease-in-out;
+-webkit-transition: opacity .25s ease-in-out;
+}
+
+.btn-lg{
+  border-radius: 0;
+  padding: 10px 15px;
+}
+
+.tutoredSubText{
+  position: absolute;
+  left: 13%;
+  top: 85%;
+  color: white;
+  opacity: 0;
+}
+
+.tutoredSubText1{
+  position: absolute;
+  right: 13%;
+  top: 85%;
+  color: white;
+  opacity: 0;
+}
+
+.show{
+  opacity: 1 !important;
+  user-select: none; /* Standard */
+}
+
+
+.Section2{
+  height: 100px;
+line-height: 100px;
+text-align: center;
+margin-top: 5%;
+}
+
+
+.honorRole{
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* .Section3 {
+  background-color: #00a8cc;
+  padding: 3% 10%;
+}
+
+*/
+
+
+
+/* Testimonials */
+
+#testimonials {
+  padding: 2% 15%;
+  text-align: center;
+  background-color: #00a8cc;
+  color: #fff;
+}
+
+.testimonial-image {
+  width: 10%;
+  border-radius: 100%;
+  margin: 20px;
+}
+
+.carousel-item {
+  padding: 7% 15%;
+}
+
+#press {
+  background-color: #00a8cc;
+  text-align: center;
+  padding-bottom: 3%;
+}
+
+.press-logo {
+  width: 15%;
+  margin: 20px 20px 50px;
+}
+
+.testimonial-text{
+  font-family: "Montserrat";
+  font-size: 2.2rem;
+}
+
+
+/* trust section */
+
+#pricing {
+  padding: 100px 300px;
+  text-align: center;
+}
+
+.price-box {
+  padding: 3% 2%;
+}
+.price-text{
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 1028px) {
+  #title {
+    text-align: center;
+  }
+
+  .title-image {
+    position: static;
+    transform: rotate(0);
+  }
+}
+
+.learnTutor{
+  text-align: center;
+}
+
+
+/* our solution */
+
+.ourSolution{
+  height: 600px;
+}
+
+.ourSolutionTitle{
+  margin-bottom: 5%;
+  text-align: center;
+  color: white;
+}
+
+.number1{
+  float: left;
+  margin-left: 25%;
+  font-size: 4rem;
+}
+
+.number1Text{
+  position: relative;
+  top: 30px;
+  right: 500px;
+  font-size: 1.5rem;
+}
+
+
+
+/* List */
+
+ol {
+  list-style: none;
+}
+
+ol li {
+  margin-left: 200px;
+  font: bold 35pt helvetica, arial, sans-serif;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+li p {
+  margin-left: 60px;
+  margin-bottom: 110px;
+  font: 15pt helvetica, arial, sans-serif;
+  padding-left: 60px;
+}
+
+span {
+  position: absolute;
+  line-height: 25px;
+}
+
+.footer{
+  text-align: center;
+  background: #00a8cc;
+  color: white;
+  margin-top: 2%;
+}
+
+.footerText{
+  padding: 4% 10%;
+}

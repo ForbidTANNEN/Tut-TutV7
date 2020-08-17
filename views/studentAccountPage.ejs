@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Success</title>
+  <!-- Bootstrap -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- css sheet -->
+  <link rel="stylesheet" href="css/studentView.css">
+</head>
+
+<body>
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <img src="images/Logo.png" alt="" height="70" width="70" class="logo noselect">
+    <a class="navbar-brand" href="#">Tut-Tut</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item left-button">
+          <a class="nav-link" href="">Contact Us</a>
+        </li>
+        <li class="nav-item mid-button ourTutorNav">
+          <a class="nav-link" href="">Our Tutors</a>
+        </li>
+        <li class="nav-item right-button ">
+          <form action="/logout" method="post">
+            <button type="submit" class="btn btn-primary shadow">Sign Out</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="mainBody">
+
+    <div class="collapsableDiv">
+      <label type="button" class="noselect btn btn-primary btn-lg collapsible">
+        <p class="dropDownButtonText">Request a Tutor</p>
+      </label>
+      <div class="content">
+
+        <h5 class="formWelcome">Welcome <%=username%></h5>
+
+        <div class="formTable">
+          <form class="" action="/getTutor" method="post">
+            <div class="form-border2">
+              <div class="formTextInput">
+                <p class="formText">Grade:</p>
+                <select class="formField1" id="grade" name="grade">
+                  <option value="" disabled selected>Select your option</option>
+                  <option value="1">1st</option>
+                  <option value="2">2nd</option>
+                  <option value="3">3rd</option>
+                  <option value="4">4th</option>
+                  <option value="5">5th</option>
+                </select>
+                <hr class="invHr">
+              </div>
+            </div>
+
+
+            <div class="form-border2">
+              <div class="formTextInput">
+                <p class="formText">Subject:</p>
+                <select class="formField1" id="ddl" name="ddl">
+                  <option value="" disabled selected>Select your option</option>
+                  <option value='Math'>Math</option>
+                  <option value='English'>English</option>
+                  <option value='History'>History</option>
+                  <option value="Science">Science</option>
+                </select>
+                <hr class="invHr">
+              </div>
+            </div>
+
+            <div class="form-border2">
+              <div class="formTextInput">
+                <p class="formText" id="subTopicFormText">Sub-topic:</p>
+                <select class="formField1" id="subTopic" name="subTopic">
+                  <option value="" disabled selected>Select your option</option>
+                  <option id="subTopic1"></option>
+                  <option id="subTopic2"></option>
+                  <option id="subTopic3"></option>
+                  <option id="subTopic4"></option>
+                  <option id="subTopic5"></option>
+                </select>
+                <hr class="invHr">
+              </div>
+            </div>
+
+            <div class="form-border2">
+              <div class="formTextInput5">
+                <p class="formText" class="">Schedule:</p>
+                <div class="wholeTable">
+                  <div class="tbl-header">
+                    <table cellpadding="0" cellspacing="0" border="0" style="border-radius: 100px;">
+                      <thead>
+                        <tr class="headTR">
+                          <th>Date</th>
+                          <th>Time (PT)</th>
+                          <th>Tutor</th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+                  <div class="tbl-content-form">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <%if(mssgs.length < 1){%>
+                      <tr>
+                        <td>No Available Sessions</td>
+                      </tr>
+                      <%}else{%>
+                      <%mssgs.forEach(function(msg){%>
+                      <tr class="formTableRow" name="<%=msg._id%>" id="<%=msg.tutorSubject%>">
+                        <td class="subjectd"><%=msg.tutorSubject%></td>
+                        <td id="msgDate"><%=msg.startDateString%></td>
+                        <td class=""><%=msg.startTimeString%></td>
+                        <td><%=msg.tutor%></td>
+                      </tr>
+                      <%})%>
+                      <input class="tableInput" name="tableInput" type="hidden" name="" value="">
+                      <%}%>
+            </table>
+          </div>
+        </div>
+          <hr class="invHr">
+        </div>
+        </div>
+
+    </div>
+
+    <div class="form-border">
+        <div class="formTextInput">
+          <p class="formText">Note:</p>
+          <textarea class="formField1" id="noteInput" type="text" name="note" maxlength="117"></textarea>
+          <hr class="invHr">
+        </div>
+    </div>
+    <button class="submitRequestTutor" type="submit" name="button">Submit</button>
+  </form>
+</div>
+</div>
+
+
+   <div class="tables">
+    <section>
+      <!--for demo wrap-->
+      <h1 class="tableHeader noselect">Tutor Sessions:</h1>
+      <div class="tbl-header1">
+        <table cellpadding="0" cellspacing="0" border="0" style="border-radius: 100px;">
+          <thead>
+            <tr class="headTR">
+              <th>Date</th>
+              <th>Time (PT)</th>
+              <th>Subject</th>
+              <th>Tutor</th>
+              <th>Tutor Email</th>
+              <th>Note</th>
+              <th>Virtual Classroom</th>
+              <th>Status</th>
+              <th>Cancel</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0" class=""> <!-- tutorSessionsTable -->
+          <%studentsMssgs.forEach(function(msg){%>
+
+                      <tbody>
+                        <tr class="tutorSessionTR">
+
+                          <td class="tutorSessionTD"><%=msg.startDateString%></td>
+                          <td class="tutorSessionTD"><%=msg.startTimeString%></td>
+
+                          <td class="tutorSessionTD"><%=msg.subject%> / <%=msg.subTopic%></td>
+                          <td class="tutorSessionTD"><%=msg.tutor%></td>
+                          <td class="tutorSessionTD"><%=msg.tutorEmail%></td>
+                          <%var previewNote = msg.note.substring(0,20) + "..."%>
+                          <td class="tutorSessionTD"><a href="" id="noteText" onclick="return alert('<%=msg.note%>')"><%=previewNote%></a></td>
+                          <td class="tutorSessionTD"><a href="<%=msg.vcLink%>">Zoom Link</a></td>
+                          <td class="tutorSessionTD"><%=msg.status%></td>
+                          <%if(msg.status === "Canceled"){%>
+                          <form id="cancelForm" action="/cancelSession" method="post">
+                            <td><input type="submit" value="Cancel" disabled onclick="return confirm('Are you sure you want to cancel this session?')" /></td>
+                            <input type="hidden" name="msgID" value="<%=msg._id%>">
+                          </form>
+                          <%}else{%>
+                          <form id="cancelForm" action="/cancelSession" method="post">
+                            <td><input type="submit" value="Cancel" onclick="return confirm('Are you sure you want to cancel this session?')" /></td>
+                            <input type="hidden" name="msgID" value="<%=msg._id%>">
+                          </form>
+                          <%}%>
+              </tr>
+          <%})%>
+                    </table>
+                  </div>
+                  </section>
+                </div>
+              </div>
+
+              <script src="studentAccount.js"></script>
+</body>
+
+</html>

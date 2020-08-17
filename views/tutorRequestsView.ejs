@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Tutor Student</title>
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<!-- css sheet -->
+		<link rel="stylesheet" href="css/tutorStudent.css">
+	</head>
+	<body>
+		<div class="limiter">
+			<div class="container-table100">
+				<div class="wrap-table100">
+					<div class="table100">
+						<table>
+							<thead>
+								<tr class="table100-head">
+									<th class="column1">Request Send Time</th>
+									<th class="column2">User's Email</th>
+									<th class="column3">Subject</th>
+									<th class="column4">Age</th>
+									<th class="column5">Status</th>
+									<th class="column6">Total</th>
+								</tr>
+							</thead>
+							<tbody>
+									<%  foundMssgs.forEach(function(pair){ %>
+												<tr>
+													<td class="column1"><%=pair.msgObj.mssgSendTime%></td>
+													<td class="column2"><%=pair.msgObj.senderUsername%></td>
+													<td class="column3"><%=pair.msgObj.subject%></td>
+													<td class="column4"><%=pair.userObj.age%></td>
+													<td class="column5"><%=pair.msgObj.status%></td>
+													<form action="/more" method="post">
+															<td class="column6"><button type="submit" name="id" value="<%=pair.msgObj._id%>">More...</button></td>
+													</form>
+												</tr>
+
+									  <%  }) %>
+
+
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="limiter">
+			<div class="container-table100">
+				<div class="wrap-table100">
+					<div class="table100">
+						<table>
+							<thead>
+								<tr class="table100-head">
+									<th class="column1">Request Send Time</th>
+									<th class="column2">User's Email</th>
+									<th class="column3">Subject</th>
+									<th class="column4">Status</th>
+									<th class="column5">More</th>
+									<th class="column6">Complete</th>
+								</tr>
+							</thead>
+							<tbody>
+									<%  yourTutorRequests.forEach(function(pair){ %>
+
+
+										<tr>
+											<td class="column1"><%=pair.mssgSendTime%></td>
+											<td class="column2"><%=pair.senderUsername%></td>
+											<td class="column3"><%=pair.subject%></td>
+											<td class="column4"><%=pair.status%></td>
+											<form action="/more" method="post">
+													<td class="column5"><button type="submit" name="id" value="<%=pair._id%>">More...</button></td>
+											</form>
+											<form action="/completedTutorRequest" method="post">
+													<td class="column5"><button type="submit" name="id" value="<%=pair._id%>">Completed?</button></td>
+											</form>
+										</tr>
+										<%  }) %>
+
+
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+		<form class="" action="/logout" method="post">
+			<button type="submit" name="logout">Log Out</button>
+		</form>
+
+	</body>
+</html>
