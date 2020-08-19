@@ -57,21 +57,6 @@ var transporter = nodemailer.createTransport({
      }
  });
 
- var mailOptions = {
-   from: 'support@Tut-Tut.org',
-   to: "Tannenhall@yahoo.com",
-   subject: 'Tut-Tut Tutoring',
-   text: 'TESTINGGGGGG'
- };
-
- transporter.sendMail(mailOptions, function(error, info) {
-   if (error) {
-     console.log(error);
-   } else {
-     console.log('Email sent:');
-   }
- });
-
 
 
 const userSchema = new mongoose.Schema({
@@ -190,6 +175,22 @@ app.post("/resetPassword", function(req, res){
       });
 
       console.log("http://localhost:3000/resetPassword/" + guid);
+
+      var mailOptions = {
+        from: 'support@Tut-Tut.org',
+        to: req.body.email,
+        subject: 'Tut-Tut Reset Password',
+        text: 'Reset Password: ' + "https://tut-tut.org/resetPassword/" + guid
+      };
+
+      transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent:');
+        }
+      });
+
     }
   });
 

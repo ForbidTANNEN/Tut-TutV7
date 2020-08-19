@@ -236,9 +236,18 @@ margin-top: 3%;
 /* trust section */
 
 #pricing {
-  padding: 50px 300px 100px 300px;
+  padding: 50px 230px 100px 230px;
   text-align: center;
 }
+
+@media only screen and (max-width: 1501px) {
+  #pricing{
+    padding: 50px 0 100px 0;
+    text-align: center;
+  }
+}
+
+
 
 .card-body{
   text-align: left;
