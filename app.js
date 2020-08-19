@@ -176,11 +176,14 @@ app.post("/resetPassword", function(req, res){
 
       console.log("http://localhost:3000/resetPassword/" + guid);
 
+      mailHTML = "<p>Reset Password(copy link into search):</p>" + "<p>https://tut-tut.org/resetPassword/" + guid + "</p>"
+
       var mailOptions = {
         from: 'support@Tut-Tut.org',
         to: req.body.email,
         subject: 'Tut-Tut Reset Password',
-        text: 'Reset Password: ' + "https://tut-tut.org/resetPassword/" + guid
+        html: mailHTML
+        // text: 'Reset Password: ' + "https://tut-tut.org/resetPassword/" + guid
       };
 
       transporter.sendMail(mailOptions, function(error, info) {
