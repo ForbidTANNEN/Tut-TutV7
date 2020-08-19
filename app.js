@@ -48,12 +48,29 @@ mongoose.set("useCreateIndex", true);
 //Email
 
 var transporter = nodemailer.createTransport({
-  service: 'Gmail',
-  auth: {
-    user: 'halltannen@gmail.com',
-    pass: 'Bentley1@'
-  }
-});
+     host: 'smtpout.secureserver.net', // Office 365 server
+     port: 465,     // secure SMTP
+     secure: true, // false for TLS - as a boolean not string - but the default is false so just remove this completely
+     auth: {
+         user: "support@Tut-Tut.org",
+         pass: "Tut-Tut123"
+     }
+ });
+
+ var mailOptions = {
+   from: 'support@Tut-Tut.org',
+   to: "Tannenhall@yahoo.com",
+   subject: 'Tut-Tut Tutoring',
+   text: 'TESTINGGGGGG'
+ };
+
+ transporter.sendMail(mailOptions, function(error, info) {
+   if (error) {
+     console.log(error);
+   } else {
+     console.log('Email sent:');
+   }
+ });
 
 
 
