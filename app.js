@@ -302,7 +302,19 @@ app.post("/addTutorTimeSlot", function(req, res){
     subjectsArray.push("History")
   }
 
-  var tutorRequest = new TutorRequest({tutor: req.user.SFname, note: "", vcLink: req.user.vcLink, tutorID: req.user._id, tutorEmail: req.user.username, status: "Available", tutorSubject: subjectsArray, startTimestamp: dayjs(req.body.date + " " + req.body.time, "YYYY-MM-DD HH:mm").valueOf()});
+  var timeInput = Number(req.body.time);
+
+  if(timeInput < 12 && req.body.amPm === "PM"){
+    timeInput = timeInput + 12;
+  }
+  if(timeInput === 12 && req.body.amPm === "AM"){
+    timeInput = 0;
+  }
+
+  console.log(req.body.date + "-" + timeInput + "YYYY-MM-DD-H");
+  console.log(dayjs(req.body.date + "-" + timeInput, "YYYY-MM-DD-H"));
+
+  var tutorRequest = new TutorRequest({tutor: req.user.SFname, note: "", vcLink: req.user.vcLink, tutorID: req.user._id, tutorEmail: req.user.username, status: "Available", tutorSubject: subjectsArray, startTimestamp: dayjs(req.body.date + "-" + timeInput, "YYYY-MM-DD-H").valueOf()});
 
   tutorRequest.save();
 
