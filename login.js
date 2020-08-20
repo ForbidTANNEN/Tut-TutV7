@@ -30,6 +30,9 @@ module.exports = function(app, User, passport) {
     } else {
 
       if(req.body.password === req.body.confirmPass){
+        if(req.body.Phone.length < 14 || req.body.Phone.length > 14){
+          res.render("signup", {signupFailure: "Please enter a valid Phone Number"})
+        }
 
       if (isNaN(req.body.age)) {
         res.render("signup", {
@@ -86,6 +89,8 @@ module.exports = function(app, User, passport) {
       }
 
 
+//hereee
+
 
     }else{
       console.log("Hellooooooooooooo");
@@ -94,6 +99,7 @@ module.exports = function(app, User, passport) {
       });
 
     }
+
 
     }
 
