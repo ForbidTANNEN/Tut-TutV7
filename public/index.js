@@ -10,30 +10,28 @@ $(window).scroll(function() {
 
 
 //overlay
-$(".overlay").height($(".half-width-img").height());
-$(".overlay1").height($(".half-width-img").height());
+$( document ).ready(function() {
+  $(".overlay").height($(".half-width-img").height());
+  $(".overlay1").height($(".half-width-img").height());
+});
 $( window ).resize(function() {
     $(".overlay").height($(".half-width-img").height());
-});
-
-$( window ).resize(function() {
     $(".overlay1").height($(".half-width-img").height());
 });
 
-
-function mouseOnImage(){
+$(".overlay").mouseover(function(){
   $("#tutorText").addClass("show");
   console.log("lol");
-}
+});
 
 $(".overlay").mouseout(function(){
   $("#tutorText").removeClass("show");
 })
 
-function mouseOnImage1(){
+$(".overlay1").mouseover(function(){
   $("#tutorText1").addClass("show");
   console.log("lol");
-}
+});
 
 $(".overlay1").mouseout(function(){
   $("#tutorText1").removeClass("show");

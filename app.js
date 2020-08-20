@@ -184,7 +184,7 @@ app.post("/resetPassword", function(req, res){
 
       console.log("http://localhost:3000/resetPassword/" + guid);
 
-      mailHTML = "<p>Reset Password(copy link into search):</p>" + "<p>https://tut-tut.org/resetPassword/" + guid + "</p>"
+      mailHTML = "<p>Reset Password(copy link into search):</p>" + "<p>https://www.tut-tut.org/resetPassword/" + guid + "</p>"
 
       var mailOptions = {
         from: 'tut.tut.contact@gmail.com',
