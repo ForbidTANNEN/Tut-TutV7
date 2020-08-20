@@ -48,14 +48,22 @@ mongoose.set("useCreateIndex", true);
 //Email
 
 var transporter = nodemailer.createTransport({
-     host: 'smtpout.secureserver.net', // Office 365 server
-     port: 465,     // secure SMTP
-     secure: true, // false for TLS - as a boolean not string - but the default is false so just remove this completely
+     service: 'gmail',// false for TLS - as a boolean not string - but the default is false so just remove this completely
      auth: {
-         user: "support@Tut-Tut.org",
-         pass: "Tut-Tut123"
+         user: "Tut.Tut.Contact@gmail.com",
+         pass: "Bentley1@"
      }
  });
+
+ // var transporter = nodemailer.createTransport({
+ //      host: 'smtpout.secureserver.net', // Office 365 server
+ //      port: 465,     // secure SMTP
+ //      secure: true, // false for TLS - as a boolean not string - but the default is false so just remove this completely
+ //      auth: {
+ //          user: "support@Tut-Tut.org",
+ //          pass: "Tut-Tut123"
+ //      }
+ //  });
 
 
 
@@ -179,7 +187,7 @@ app.post("/resetPassword", function(req, res){
       mailHTML = "<p>Reset Password(copy link into search):</p>" + "<p>https://tut-tut.org/resetPassword/" + guid + "</p>"
 
       var mailOptions = {
-        from: 'support@Tut-Tut.org',
+        from: 'tut.tut.contact@gmail.com',
         to: req.body.email,
         subject: 'Tut-Tut Reset Password',
         html: mailHTML
