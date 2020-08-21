@@ -316,3 +316,7 @@ section{
 .tutorSessionTR{
   height: 50px;
 }
+
+.describeTopicText{
+  padding-right: 15px;
+}

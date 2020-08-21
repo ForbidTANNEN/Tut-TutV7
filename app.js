@@ -50,7 +50,7 @@ mongoose.set("useCreateIndex", true);
 var transporter = nodemailer.createTransport({
      service: 'gmail',// false for TLS - as a boolean not string - but the default is false so just remove this completely
      auth: {
-         user: "Tut.Tut.Contact@gmail.com",
+         user: "support@tut-tut.org",
          pass: "Bentley1@"
      }
  });
@@ -187,7 +187,7 @@ app.post("/resetPassword", function(req, res){
       mailHTML = "<p>Reset Password(copy link into search):</p>" + "<p>https://www.tut-tut.org/resetPassword/" + guid + "</p>"
 
       var mailOptions = {
-        from: 'tut.tut.contact@gmail.com',
+        from: 'support@tut-tut.org',
         to: req.body.email,
         subject: 'Tut-Tut Reset Password',
         html: mailHTML

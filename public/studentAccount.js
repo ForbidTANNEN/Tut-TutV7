@@ -55,10 +55,11 @@ $("#ddl").change(function () {
 
 
   if($(this).val() === "Math"){
+    $('#addedSubtopicField').remove();
 
     if(inputOn == true){
       console.log("INPUT ON TRUE");
-      $('#subTopicFormText').append('<select class="formField1" id="subTopic" name="subTopic"><option disabled selected>Select your option</option><option id="subTopic1"></option><option id="subTopic2"></option><option id="subTopic3"></option><option id="subTopic4"></option><option id="subTopic5"></option></select>')
+      $('#subTopicFormText').append('<select class="formField1" id="subTopic" name="subTopic"><option value="" disabled selected>Select your option</option><option value="Other">Other / I dont know</option><option id="subTopic1"></option><option id="subTopic2"></option><option id="subTopic3"></option><option id="subTopic4"></option><option id="subTopic5"></option></select>')
       $('#subTopicInputAdded').remove();
       inputOn = false;
     }
@@ -81,10 +82,11 @@ $("#ddl").change(function () {
   }
 
   if($(this).val() === "English"){
+    $('#addedSubtopicField').remove();
 
     if(inputOn == true){
       console.log("INPUT ON TRUE");
-      $('#subTopicFormText').append('<select class="formField1" id="subTopic" name="subTopic"><option disabled selected>Select your option</option><option id="subTopic1"></option><option id="subTopic2"></option><option id="subTopic3"></option><option id="subTopic4"></option><option id="subTopic5"></option></select>')
+      $('#subTopicFormText').append('<select class="formField1" id="subTopic" name="subTopic"><option value="" disabled selected>Select your option</option><option value="Other">Other / I dont know</option><option id="subTopic1"></option><option id="subTopic2"></option><option id="subTopic3"></option><option id="subTopic4"></option><option id="subTopic5"></option></select>')
       $('#subTopicInputAdded').remove();
       inputOn = false;
     }
@@ -106,6 +108,7 @@ $("#ddl").change(function () {
   }
 
   if($(this).val() === "Science" || $(this).val() === "History"){
+    $('#addedSubtopicField').remove();
     if(inputOn == true){return;}
     $('#subTopicFormText').append('<input id="subTopicInputAdded" class="formField1" type="text" name="subTopic" maxlength="20" required>')
     $('#subTopic').remove();
@@ -136,7 +139,33 @@ $rows.show().filter(function() {
 
  });
 
+ // $("#subTopic").change(function(){
+ //   console.log("CHANGE: ");
+ //   console.log($(this).val());
+ //   // if($(this).val() === "Other"){
+ //   //   $('#SubtopicDiv').append('<div class="form-border2" id="addedSubtopicField"><div class="formTextInput"><p class="formText" id="subTopicFormText">Sub-topic:</p><input type="formField1" name="" value=""><hr class="invHr"></div></div>')
+ //   // }
+ //   // else {
+ //   //   $('#addedSubtopicField').remove();
+ //   // }
+ // });
 
+ $(document.body).on('change','#subTopic',function(){
+   console.log("CHANGE: ");
+   console.log($(this).val());
+   if($(this).val() === "Other"){
+     $('#SubtopicDiv').append('<div class="form-border2" id="addedSubtopicField"><div class="formTextInput"><p class="formText" id="subTopicFormText describeTopicText" >Describe The topic:</p><input type="formField1" id="describeTopic" name="subTopic" value=""><hr class="invHr"></div></div>')
+     $('#subTopic').attr('name', "");
+   }
+   else {
+     $('#addedSubtopicField').remove();
+     $('#subTopic').attr('name', "subTopic");
+   }
+});
+
+// $(document.body).on('change paste keyup','#describeTopic',function(){
+//   $('#subTopic').val($(this).val());
+// });
 
 
 
@@ -168,3 +197,9 @@ $( document ).ready(function() {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+$(".dropDownButtonText").click(function(){
+  setTimeout(function(){
+      $('.content').css("max-height", "1000px")
+}, 500);
+});
