@@ -154,7 +154,8 @@ $rows.show().filter(function() {
    console.log("CHANGE: ");
    console.log($(this).val());
    if($(this).val() === "Other"){
-     $('#SubtopicDiv').append('<div class="form-border2" id="addedSubtopicField"><div class="formTextInput"><p class="formText" id="subTopicFormText describeTopicText" >Describe The topic:</p><input type="formField1" id="describeTopic" name="subTopic" value=""><hr class="invHr"></div></div>')
+     $('<div class="form-border2" id="addedSubtopicField"><div class="formTextInput"><p class="formText" id="subTopicFormText describeTopicText" >Describe The topic:</p><input type="formField1" id="describeTopic" name="subTopic" value=""><hr class="invHr"></div></div>').insertAfter("#SubtopicDiv")
+// <div class="form-border"><div class="formTextInput"><p class="formText" id="subTopicFormText describeTopicText">Describe The topic:</p><input type="text" class="formField1" id="describeTopic" name="subTopic" value=""><hr class="invHr"></div></div>
      $('#subTopic').attr('name', "");
    }
    else {
@@ -198,8 +199,12 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 
+var requestTutorClick = false;
 $(".dropDownButtonText").click(function(){
-  setTimeout(function(){
-      $('.content').css("max-height", "1000px")
-}, 500);
+  if(requestTutorClick === false){
+    setTimeout(function(){
+        $('.content').css("max-height", "1000px")
+        requestTutorClick = true;
+  }, 500);
+  }
 });

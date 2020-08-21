@@ -317,6 +317,7 @@ section{
   height: 50px;
 }
 
-.describeTopicText{
-  padding-right: 15px;
+#describeTopic{
+  position: relative;
+  width: 100%;
 }
