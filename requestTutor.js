@@ -45,7 +45,7 @@ app.post("/getTutor", function(req, res){
     msgTime = time1 + " - " + time2
 
     var mailOptions = {
-      from: 'halltannen@gmail.com',
+      from: 'support@tut-tut.org',
       to: req.user.username,
       subject: 'Tut-Tut Tutoring',
       text: 'Your request for '+ tutorRequestInfo.subject +' tutoring request has been accepted, for ' + msgDate + ' at ' + msgTime
@@ -60,7 +60,7 @@ app.post("/getTutor", function(req, res){
     });
 
     var mailOptions = {
-      from: 'halltannen@gmail.com',
+      from: 'support@tut-tut.org',
       to: tutorRequestInfo.tutorEmail,
       subject: 'Tut-Tut Tutoring',
       text: 'Your request for '+ tutorRequestInfo.subject +' tutoring request has been accepted, for ' + msgDate + ' at ' + msgTime

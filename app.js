@@ -553,6 +553,23 @@ app.post("/completedTutorRequest", function(req, res){
 
 app.post("/cancelSession", function(req, res){
 
+  TutorRequest.findOne({_id: req.body.msgID}, function(err, foundMsg){
+    var mailOptions = {
+      from: 'support@tut-tut.org',
+      to: foundMsg.tutorEmail,
+      subject: 'Tut-Tut Tutoring',
+      text: 'Your ' + foundMsg.subject + " student has unfortunately cancelled your session at " + dayjs(foundMsg.startTimestamp).format("MM/DD/YYYY h:mm a")
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response + req.body.email);
+      }
+    });
+  });
+
   if(req.isAuthenticated()){
   console.log("HEYY");
   TutorRequest.findOneAndUpdate({_id: req.body.msgID}, {status: "Canceled", importance: 3}, function(err, doc) {
@@ -566,6 +583,24 @@ app.post("/cancelSession", function(req, res){
 app.post("/cancelSessionTutor", function(req, res){
 
   if(req.isAuthenticated()){
+
+    TutorRequest.findOne({_id: req.body.msgID}, function(err, foundMsg){
+      var mailOptions = {
+        from: 'support@tut-tut.org',
+        to: foundMsg.studentUsername,
+        subject: 'Tut-Tut Tutoring',
+        html: '<p>Your ' + foundMsg.subject + " tutor has unfortunately cancelled your session at " + dayjs(foundMsg.startTimestamp).format("MM/DD/YYYY h:mm a") + ". If you would like to rebook a new session, head to https://tut-tut.org/studentAccountPage</p>"
+      };
+
+      transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response + req.body.email);
+        }
+      });
+    });
+
   console.log("HEYY");
   TutorRequest.findOneAndUpdate({_id: req.body.msgID}, {status: "Canceled", importance: 3}, function(err, doc) {
     res.redirect("/tutorRequestsView");
