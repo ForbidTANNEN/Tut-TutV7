@@ -149,8 +149,8 @@
     <div class="form-group">
 			<p id="signupFail"><%=signupFailure%></p>
     			<div class="row">
-    				<div class="col-xs-6"><input type="text" class="form-control" name="GFname" placeholder="Guardian First Name" required></div>
-    				<div class="col-xs-6"><input type="text" class="form-control" name="GLname" placeholder="Last Name"  required></div>
+    				<div class="col-xs-6"><input type="text" class="form-control" name="GFname" pattern="^[a-zA-Z][a-zA-Z0-9-_\.-]{1,20}$" title="Alphanumeric characheters only" placeholder="Guardian First Name" required></div>
+    				<div class="col-xs-6"><input type="text" class="form-control" name="GLname" pattern="^[a-zA-Z][a-zA-Z0-9-_\.-]{1,20}$" title="Alphanumeric characheters only" placeholder="Last Name"  required></div>
     			</div>
             </div>
             <div class="form-group">
@@ -158,12 +158,12 @@
             </div>
     <div class="form-group">
           <div class="row">
-            <div class="col-xs-6"><input type="text" class="form-control" name="SFname" placeholder="Student First Name" required></div>
-            <div class="col-xs-6"><input type="text" class="form-control" name="SLname" placeholder="Last Name" required></div>
+            <div class="col-xs-6"><input type="text" class="form-control" name="SFname" pattern="^[a-zA-Z][a-zA-Z0-9-_\.-]{1,20}$" title="Alphanumeric characheters only" placeholder="Student First Name" required></div>
+            <div class="col-xs-6"><input type="text" class="form-control" name="SLname" pattern="^[a-zA-Z][a-zA-Z0-9-_\.-]{1,20}$" title="Alphanumeric characheters only" placeholder="Last Name" required></div>
           </div>
             </div>
         <div class="form-group">
-          <input type="age" class="form-control" name="School" placeholder="School" required>
+          <input type="age" class="form-control" name="School" pattern="^[a-zA-Z][a-zA-Z0-9-_\.-]{1,20}$" title="Alphanumeric characheters only" placeholder="School" required>
 					<%tutorSignUp=false;%>
         </div>
 
@@ -176,10 +176,10 @@
         	<input type="username" class="form-control" name="username" placeholder="Email" required>
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required>
+            <input type="password" class="form-control" name="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="A uppercase, lowercase, and a number" placeholder="Password" required>
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="confirmPass" placeholder="Confirm Password" required>
+            <input type="password" class="form-control" name="confirmPass" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Password" placeholder="Confirm Password" required>
         </div>
         <div class="form-group">
 			<label class="checkbox-inline"><input type="checkbox" name="TOS" required> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>

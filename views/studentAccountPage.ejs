@@ -49,6 +49,7 @@
 
         <h5 class="formWelcome">Welcome <%=username%></h5>
 
+
         <div class="formTable">
           <form class="" action="/getTutor" method="post">
             <div class="form-border2">
@@ -143,7 +144,7 @@
     <div class="form-border">
         <div class="formTextInput">
           <p class="formText">Note:</p>
-          <textarea class="formField1" id="noteInput" type="text" name="note" maxlength="117"></textarea>
+          <textarea class="formField1" id="noteInput" type="text" name="note" pattern="^[a-zA-Z][a-zA-Z0-9-_\.-]{1,117}$" title="Alphanumeric characheters only" maxlength="117"></textarea>
           <hr class="invHr">
         </div>
     </div>

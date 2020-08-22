@@ -4,6 +4,10 @@ module.exports = function(app, TutorRequest, passport, transporter, dayjs){
 
 app.post("/getTutor", function(req, res){
 
+  // if(req.body.grade === null){
+  //   res.render("studentAccountPage", {requestTutorFail: "Fill in all fields"})
+  // }
+
   console.log(req.body.tableInput);
 
   TutorRequest.findOne({_id: req.body.tableInput}).exec(function(err, studentsMssgs){

@@ -76,8 +76,8 @@
   <form class="form-signin" method="post" action="/login">
     <img class="mb-4" src="images/Logo.png" width="125" height="125">
     <p><%=loginFailure%></p>
-    <input type="username" name="username" class="form-control top" placeholder="Email" required autofocus autocomplete="off">
-    <input type="password" name="password" class="form-control bottom" placeholder="Password" required autocomplete="off">
+    <input type="email" name="username" class="form-control top" placeholder="Email" required autofocus autocomplete="off">
+    <input type="password" name="password" class="form-control bottom" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Password" required autocomplete="off">
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     <div class="hint-text1">Don't have an account? <a class="hint-text-href" href="/signup">Sign Up</a></div>

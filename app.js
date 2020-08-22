@@ -198,7 +198,7 @@ app.post("/resetPassword", function(req, res){
         if (error) {
           console.log(error);
         } else {
-          console.log('Email sent:');
+          console.log('Email sent: ' + req.body.email);
         }
       });
 
