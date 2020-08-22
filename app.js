@@ -9,6 +9,7 @@ var nodemailer = require('nodemailer');
 var dayjs = require('dayjs')
 const cron = require("node-cron");
 const crypto = require('crypto');
+const querystring = require('querystring');
 //import dayjs from 'dayjs' // ES 2015
 dayjs().format()
 
@@ -449,6 +450,10 @@ app.get("/studentAccountPage", function(req, res) {
 
           //ADD START DATE STRING AND STARTTIMESTRING AND THEN ADD THIS TO THE TABLE
 
+          // if(req.query.failure === 'true'){
+          //   res.render
+          // }
+
           res.render("studentAccountPage", {mssgs: mssgsWithCorrectTime, studentsMssgs: studentMssgsWithCorrectTime, username: req.user.username});
         });
         });
@@ -478,7 +483,7 @@ app.get("/studentAccountPage", function(req, res) {
 //Request Tutor
 
 
-require("./requestTutor.js")(app, TutorRequest, passport, transporter, dayjs)
+require("./requestTutor.js")(app, TutorRequest, passport, transporter, dayjs, querystring)
 
 
 //MORE TutorRequest

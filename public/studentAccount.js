@@ -208,3 +208,14 @@ $(".dropDownButtonText").click(function(){
   }, 500);
   }
 });
+
+
+$('.submitRequestTutor').click(function(event){
+  console.log($('.tableInput').val());
+  if($('.tableInput').val() == null || $('.tableInput').val() === ""){
+    alert("Please Select A time Slot");
+    console.log("CALLED IF");
+    event.preventDefault();
+  }
+  console.log("CALLED CLICK");
+})

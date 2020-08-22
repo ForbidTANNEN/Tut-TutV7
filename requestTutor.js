@@ -1,12 +1,13 @@
 
-module.exports = function(app, TutorRequest, passport, transporter, dayjs){
+module.exports = function(app, TutorRequest, passport, transporter, dayjs, querystring){
 
 
 app.post("/getTutor", function(req, res){
 
-  // if(req.body.grade === null){
-  //   res.render("studentAccountPage", {requestTutorFail: "Fill in all fields"})
-  // }
+  console.log(req.body.grade);
+
+  // if(req.body.grade != null){
+
 
   console.log(req.body.tableInput);
 
@@ -80,7 +81,10 @@ app.post("/getTutor", function(req, res){
 
   });
 
-
+// }else {
+//   console.log("CALLED GET TUTOR:");
+//   res.redirect('/studentAccountPage?failure=true')
+// }
 
 });
 }
