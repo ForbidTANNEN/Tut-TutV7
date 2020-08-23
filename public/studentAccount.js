@@ -59,7 +59,7 @@ $("#ddl").change(function () {
 
     if(inputOn == true){
       console.log("INPUT ON TRUE");
-      $('#subTopicFormText').append('<select class="formField1" id="subTopic" name="subTopic"><option value="" disabled selected>Select your option</option><option value="Other">Other / I dont know</option><option id="subTopic1"></option><option id="subTopic2"></option><option id="subTopic3"></option><option id="subTopic4"></option><option id="subTopic5"></option></select>')
+      $('#subTopicFormText').append('<select class="formField1" id="subTopic" name="subTopic"><option value="" disabled selected>Select your option</option><option id="subTopic1"></option><option id="subTopic2"></option><option id="subTopic3"></option><option id="subTopic4"></option><option id="subTopic5"></option><option value="Other">Other</option></select>')
       $('#subTopicInputAdded').remove();
       inputOn = false;
     }
@@ -86,7 +86,7 @@ $("#ddl").change(function () {
 
     if(inputOn == true){
       console.log("INPUT ON TRUE");
-      $('#subTopicFormText').append('<select class="formField1" id="subTopic" name="subTopic"><option value="" disabled selected>Select your option</option><option value="Other">Other / I dont know</option><option id="subTopic1"></option><option id="subTopic2"></option><option id="subTopic3"></option><option id="subTopic4"></option><option id="subTopic5"></option></select>')
+      $('#subTopicFormText').append('<select class="formField1" id="subTopic" name="subTopic"><option value="" disabled selected>Select your option</option><option id="subTopic1"></option><option id="subTopic2"></option><option id="subTopic3"></option><option id="subTopic4"></option><option id="subTopic5"></option><option value="Other">Other</option></select>')
       $('#subTopicInputAdded').remove();
       inputOn = false;
     }
@@ -154,7 +154,7 @@ $rows.show().filter(function() {
    console.log("CHANGE: ");
    console.log($(this).val());
    if($(this).val() === "Other"){
-     $('<div class="form-border2" id="addedSubtopicField"><div class="formTextInput"><p class="formText" id="subTopicFormText describeTopicText" >Describe The topic:</p><input type="formField1" id="describeTopic" name="subTopic" value=""><hr class="invHr"></div></div>').insertAfter("#SubtopicDiv")
+     $('<div class="form-border2" id="addedSubtopicField"><div class="formTextInput"><p class="formText" id="subTopicFormText describeTopicText" pattern="^[a-zA-Z ][a-zA-Z0-9-_\.- ]{1,117}$">Subtopic Description:</p><input type="formField1" id="describeTopic" name="subTopic" value=""><hr class="invHr"></div></div>').insertAfter("#SubtopicDiv")
 // <div class="form-border"><div class="formTextInput"><p class="formText" id="subTopicFormText describeTopicText">Describe The topic:</p><input type="text" class="formField1" id="describeTopic" name="subTopic" value=""><hr class="invHr"></div></div>
      $('#subTopic').attr('name', "");
    }

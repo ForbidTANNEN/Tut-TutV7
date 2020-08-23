@@ -107,7 +107,8 @@ const tutorRequestSchema = new mongoose.Schema({
   importance: Number,
   studentUsername: String,
   studentName: String,
-  vcLink: String
+  vcLink: String,
+  sentReminderEmail: String
 });
 
 
@@ -323,7 +324,7 @@ app.post("/addTutorTimeSlot", function(req, res){
   console.log(req.body.date + "-" + timeInput + "YYYY-MM-DD-H");
   console.log(dayjs(req.body.date + "-" + timeInput, "YYYY-MM-DD-H"));
 
-  var tutorRequest = new TutorRequest({tutor: req.user.SFname, note: "", vcLink: req.user.vcLink, tutorID: req.user._id, tutorEmail: req.user.username, status: "Available", tutorSubject: subjectsArray, startTimestamp: dayjs(req.body.date + "-" + timeInput, "YYYY-MM-DD-H").valueOf()});
+  var tutorRequest = new TutorRequest({tutor: req.user.SFname, note: "",sentReminderEmail: 'false', vcLink: req.user.vcLink, tutorID: req.user._id, tutorEmail: req.user.username, status: "Available", tutorSubject: subjectsArray, startTimestamp: dayjs(req.body.date + "-" + timeInput, "YYYY-MM-DD-H").valueOf()});
 
   tutorRequest.save();
 
@@ -478,7 +479,9 @@ app.get("/studentAccountPage", function(req, res) {
 // });
 
 
-
+app.get("/aboutUs", function(req, res){
+  res.render("aboutUs");
+});
 
 //Request Tutor
 
@@ -634,6 +637,38 @@ let updateCompleted = cron.schedule('* * * * *', () => {
 });
 
 updateCompleted.start();
+
+console.log(Date.now() + 3600000);
+
+let hourBeforeEmails = cron.schedule('* * * * *', () => {
+
+  TutorRequest.find({sentReminderEmail : 'false', startTimestamp: {$lt: Date.now() + 3600000}}, function(err, foundMsgs){
+  console.log(foundMsgs);
+  foundMsgs.forEach(function(msg){
+    var mailOptions = {
+      from: 'support@tut-tut.org',
+      to: msg.studentUsername,
+      subject: 'Tut-Tut Tutoring',
+      text: 'Day before'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response + req.body.email);
+      }
+    });
+  });
+});
+
+TutorRequest.update({sentReminderEmail : 'false', startTimestamp: {$lt: Date.now() + 3600000}}, {sentReminderEmail: 'true'}, {multi: true},function(err, doc){
+  console.log(err);
+});
+});
+
+hourBeforeEmails.start();
+// console.log(new Date());
 
 
 let port = process.env.PORT;

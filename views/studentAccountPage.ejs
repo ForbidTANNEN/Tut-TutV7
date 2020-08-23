@@ -87,12 +87,12 @@
                 <p class="formText" id="subTopicFormText">Sub-topic:</p>
                 <select class="formField1" id="subTopic" name="subTopic" required>
                   <option value="" disabled selected>Select your option</option>
-                  <option value="Other">Other / I dont know</option>
                   <option id="subTopic1"></option>
                   <option id="subTopic2"></option>
                   <option id="subTopic3"></option>
                   <option id="subTopic4"></option>
                   <option id="subTopic5"></option>
+                  <option value="Other">Other</option>
                 </select>
                 <hr class="invHr">
               </div>
@@ -144,7 +144,7 @@
     <div class="form-border">
         <div class="formTextInput">
           <p class="formText">Note:</p>
-          <textarea class="formField1" id="noteInput" type="text" name="note" pattern="^[a-zA-Z][a-zA-Z0-9-_\.-]{1,117}$" title="Alphanumeric characheters only" maxlength="117"></textarea>
+          <textarea class="formField1" id="noteInput" type="text" name="note" pattern="^[a-zA-Z ][a-zA-Z0-9-_\.- ]{1,117}$" title="Alphanumeric characheters only" maxlength="117"></textarea>
           <hr class="invHr">
         </div>
     </div>
