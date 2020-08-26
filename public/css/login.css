@@ -30,6 +30,7 @@ body {
   height: auto;
   padding: 10px;
   font-size: 16px;
+  margin-bottom: 15px;
 }
 
 .form-signin .form-control:focus {

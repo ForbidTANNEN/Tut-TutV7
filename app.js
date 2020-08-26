@@ -203,7 +203,7 @@ app.post("/resetPassword", function(req, res){
           console.log('Email sent: ' + req.body.email);
         }
       });
-
+      res.sendFile(__dirname + "/views/sentEmailSuccess.html");
     }
   });
 
