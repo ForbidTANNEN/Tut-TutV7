@@ -1,0 +1,61 @@
+.parallax {
+  /* The image used */
+  background-image: url("classroom.jpg");
+
+  /* Set a specific height */
+  min-height: 700px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.missionStatement{
+  padding-top: 110px;
+  color: #fff;
+  font-size: 2.4rem;
+}
+
+.tutTutHead{
+  padding-top: 200px;
+  color: #fff;
+}
+
+.signupButtonHeader{
+  margin-top: 50px;
+}
+
+.whatIsTut-Tut{
+  text-align: center;
+  padding: 0 35%;
+}
+
+.whatIsText{
+  padding-top: 90px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  font-size: 2.1rem;
+}
+
+.whatIsParagraph{
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.chalkboard{
+  height: 120px;
+  background-color: blue;
+  margin-bottom: 300px;
+  background-image: url("chalkboard.jpg");
+  text-align: center;
+}
+
+
+.contact{
+  color: white;
+  padding-top: 33px;
+  font-size: 1.2rem;
+}
