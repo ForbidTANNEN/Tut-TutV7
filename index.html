@@ -30,18 +30,17 @@
 
       <!-- Nav Bar -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a href="/">
         <img src="images/Logo.png" alt="" height="80" width="80" class="logo">
-        <a class="navbar-brand" href="#">Tut-Tut</a>
+        </a>
+        <a class="navbar-brand" href="/">Tut-Tut</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item left-button">
-              <a class="nav-link" href="">Contact Us</a>
-            </li>
             <li class="nav-item mid-button">
-              <a class="nav-link" href="">About our Tutors</a>
+              <a class="nav-link" href="/aboutUs">About</a>
             </li>
             <li>
               <a class="nav-link" href="/login">Login</a>
@@ -133,7 +132,9 @@
                 <p><i class="fas fa-apple-alt fa-xs"></i>High School Honor Role Students</p>
                 <p><i class="fas fa-apple-alt fa-xs"></i>Between 9-12th Grade</p>
                 <p><i class="fas fa-apple-alt fa-xs"></i>Attending Elite Private Schools or Top-Ranked High Schools</p>
-                <button class="btn btn-lg btn-block btn-dark" type="button">Sign Up</button>
+                <form action="/signup" method="get">
+                  <button class="btn btn-lg btn-block btn-dark" type="submit">Sign Up</button>
+                </form>
               </div>
             </div>
           </div>
@@ -149,12 +150,14 @@
                 <p><i class="fas fa-apple-alt fa-xs"></i>Have a Wide Variety of Tutors That Can Teach Any Subject</p>
                 <p><i class="fas fa-apple-alt fa-xs"></i>Communicate Goals and Achievements With Parents</p>
                 <p><i class="fas fa-apple-alt fa-xs"></i>Unlimited Free Tutoring Sessions!</p>
-                <button class="btn btn-lg btn-block btn-dark" type="button">Sign Up</button>
+                <form action="/signup" method="get">
+                <button class="btn btn-lg btn-block btn-dark" type="submit">Sign Up</button>
+              </form>
               </div>
             </div>
           </div>
         </div>
-        <a class="learnTutor" href="www.yahoo.com">To learn more about our tutors, click here</a>
+        <a class="learnTutor" href="/aboutUs">To learn more about our tutors, click here</a>
       </section>
 
       <div class="footer">
