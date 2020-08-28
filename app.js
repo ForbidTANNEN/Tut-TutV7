@@ -186,7 +186,7 @@ app.post("/resetPassword", function(req, res){
 
       console.log("http://localhost:3000/resetPassword/" + guid);
 
-      mailHTML = "<p>Reset Password(copy link into search):</p>" + "<p>https://www.tut-tut.org/resetPassword/" + guid + "</p>"
+      mailHTML = "<p>Hello!</p><p>To reset your Tut-Tut account password click on the following link. Please note that the link will expire in 48 hours. </p>"+ "<a href='https://www.tut-tut.org/resetPassword/'"+guid+  ">https://www.tut-tut.org/resetPassword/" + guid + "</a>"+"<p>Thank you,<br>Tut-Tut</p>"
 
       var mailOptions = {
         from: 'support@tut-tut.org',

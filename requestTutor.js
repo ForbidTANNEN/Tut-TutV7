@@ -37,11 +37,9 @@ app.post("/getTutor", function(req, res){
   });
 
 
-  res.redirect("/studentAccountPage");
-
   TutorRequest.findOne({_id: req.body.tableInput}).exec(function(err, tutorRequestInfo){
 
-    console.log(tutorRequestInfo.startTimestamp);
+    console.log(tutorRequestInfo);
     var dateFormatted = dayjs(tutorRequestInfo.startTimestamp);
 
     msgDate = dateFormatted.format('MM/DD/YYYY')
@@ -53,7 +51,7 @@ app.post("/getTutor", function(req, res){
       from: 'support@tut-tut.org',
       to: req.user.username,
       subject: 'Tut-Tut Tutoring',
-      text: 'Your request for '+ tutorRequestInfo.subject +' tutoring request has been accepted, for ' + msgDate + ' at ' + msgTime
+      html: "<p>Hello " + tutorRequestInfo.studentName + ",</p><p>Thank you for booking a tutoring session with Tut-Tut. Please set a reminder to not forget your " + tutorRequestInfo.subject + " tutoring session on " + msgDate + " at " + msgTime + ".</p><p>We look forward to seeing you, <br> Tut-Tut</p>"
     };
 
     transporter.sendMail(mailOptions, function(error, info) {
@@ -68,7 +66,7 @@ app.post("/getTutor", function(req, res){
       from: 'support@tut-tut.org',
       to: tutorRequestInfo.tutorEmail,
       subject: 'Tut-Tut Tutoring',
-      text: 'Your request for '+ tutorRequestInfo.subject +' tutoring request has been accepted, for ' + msgDate + ' at ' + msgTime
+      html: "<p>Hello " + tutorRequestInfo.tutor + ",</p><p>The student, " + tutorRequestInfo.studentName + " has booked your " + tutorRequestInfo.subject + " tutoring session for " + msgDate + " at " + msgTime + ". More specific information about this tutoring session can be found on your Tut-Tut account page!</p><p>We look forward to seeing you, <br> Tut-Tut</p>"
     };
 
     transporter.sendMail(mailOptions, function(error, info) {
@@ -78,6 +76,8 @@ app.post("/getTutor", function(req, res){
         console.log('Email sent: ' + info.response + req.body.email);
       }
     });
+
+      res.redirect("/studentAccountPage");
 
   });
 
