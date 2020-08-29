@@ -650,7 +650,7 @@ let hourBeforeEmails = cron.schedule('* * * * *', () => {
       from: 'support@tut-tut.org',
       to: msg.studentUsername,
       subject: 'Tut-Tut Tutoring',
-      text: 'Day before'
+      html: "<p>Hello " + msg.studentName + ",</p>" + "<p>This is a 1-hour reminder for your " + msg.subject + " session at " + dayjs(msg.startTimestamp).format("MM/DD/YYYY h:mm a") + ".</p> <p>See you soon,<br>Tut-Tut</p>"
     };
 
     transporter.sendMail(mailOptions, function(error, info) {
@@ -664,7 +664,7 @@ let hourBeforeEmails = cron.schedule('* * * * *', () => {
       from: 'support@tut-tut.org',
       to: msg.tutorEmail,
       subject: 'Tut-Tut Tutoring',
-      text: 'Day before'
+      html: "<p>Hello " + msg.tutor + ",</p>" + "<p>This is a 1-hour reminder for your " + msg.subject + " session at " + dayjs(msg.startTimestamp).format("MM/DD/YYYY h:mm a") + ".</p> <p>See you soon,<br>Tut-Tut</p>"
     };
 
     transporter.sendMail(mailOptions, function(error, info) {
