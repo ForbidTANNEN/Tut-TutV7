@@ -566,7 +566,7 @@ app.post("/cancelSession", function(req, res){
       from: 'support@tut-tut.org',
       to: foundMsg.tutorEmail,
       subject: 'Tut-Tut Tutoring',
-      html: "<p>Hello " + foundMsg.tutor + ",</p><p>Unfortunately, " + foundMsg.studentName + " has cancelled his session, and is unable to make the session at " + dayjs(foundMsg.startTimestamp).format("MM/DD/YYYY h:mm a") + ". If you are still available, and would like to reopen a session with a different student, click the link below.</p> <a href='https://www.tut-tut.org/tutorRequestsView'>https://www.tut-tut.org/tutorRequestsView</a><p>Sorry for the inconvenience,<br>Tut-Tut</p>"
+      html: "<p>Hello " + foundMsg.tutor + ",</p><p>Unfortunately, " + foundMsg.studentName + " has cancelled their session, and is unable to make the session at " + dayjs(foundMsg.startTimestamp).format("MM/DD/YYYY h:mm a") + ". If you are still available, and would like to reopen a session with a different student, click the link below.</p> <a href='https://www.tut-tut.org/tutorRequestsView'>https://www.tut-tut.org/tutorRequestsView</a><p>Sorry for the inconvenience,<br>Tut-Tut</p>"
     };
 
     transporter.sendMail(mailOptions, function(error, info) {
@@ -597,7 +597,7 @@ app.post("/cancelSessionTutor", function(req, res){
         from: 'support@tut-tut.org',
         to: foundMsg.studentUsername,
         subject: 'Tut-Tut Tutoring',
-        html: '<p>Your ' + foundMsg.subject + " tutor has unfortunately cancelled your session at " + dayjs(foundMsg.startTimestamp).format("MM/DD/YYYY h:mm a") + ". If you would like to rebook a new session, head to https://tut-tut.org/studentAccountPage</p>"
+        html: "<p>Hello " + foundMsg.studentName + ",</p><p>Your tutor, "+ foundMsg.tutor+  " is unfortunately unable to make it and has cancelled your session at " + dayjs(foundMsg.startTimestamp).format("MM/DD/YYYY h:mm a") + ". If you are interested in rebooking a tutor session for a different time, please click the link below.</p> <a href='https://www.tut-tut.org/studentAccountPage'>https://www.tut-tut.org/studentAccountPage</a><p>Sorry for the inconvenience,<br>Tut-Tut</p>"
       };
 
       transporter.sendMail(mailOptions, function(error, info) {
@@ -645,6 +645,7 @@ let hourBeforeEmails = cron.schedule('* * * * *', () => {
   TutorRequest.find({sentReminderEmail : 'false', startTimestamp: {$lt: Date.now() + 3600000}}, function(err, foundMsgs){
   console.log(foundMsgs);
   foundMsgs.forEach(function(msg){
+    if(msg.studentUsername !== null || msg.studentUsername !== ""){
     var mailOptions = {
       from: 'support@tut-tut.org',
       to: msg.studentUsername,
@@ -659,6 +660,21 @@ let hourBeforeEmails = cron.schedule('* * * * *', () => {
         console.log('Email sent: ' + info.response + req.body.email);
       }
     });
+    var mailOptions = {
+      from: 'support@tut-tut.org',
+      to: msg.tutorEmail,
+      subject: 'Tut-Tut Tutoring',
+      text: 'Day before'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response + req.body.email);
+      }
+    });
+  }
   });
 });
 
