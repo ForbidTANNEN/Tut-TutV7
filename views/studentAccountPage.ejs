@@ -189,7 +189,7 @@
                           <td class="tutorSessionTD"><a href="" id="noteText" onclick="return alert('<%=msg.note%>')"><%=previewNote%></a></td>
                           <td class="tutorSessionTD"><a href="<%=msg.vcLink%>">Zoom Link</a></td>
                           <td class="tutorSessionTD"><%=msg.status%></td>
-                          <%if(msg.status === "Canceled"){%>
+                          <%if(msg.status === "Canceled" || msg.status === "Completed"){%>
                           <form id="cancelForm" action="/cancelSession" method="post">
                             <td><input type="submit" value="Cancel" disabled onclick="return confirm('Are you sure you want to cancel this session?')" /></td>
                             <input type="hidden" name="msgID" value="<%=msg._id%>">

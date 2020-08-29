@@ -566,7 +566,7 @@ app.post("/cancelSession", function(req, res){
       from: 'support@tut-tut.org',
       to: foundMsg.tutorEmail,
       subject: 'Tut-Tut Tutoring',
-      text: 'Your ' + foundMsg.subject + " student has unfortunately cancelled your session at " + dayjs(foundMsg.startTimestamp).format("MM/DD/YYYY h:mm a")
+      html: "<p>Hello " + foundMsg.tutor + ",</p><p>Unfortunately, " + foundMsg.studentName + " has cancelled his session, and is unable to make the session at " + dayjs(foundMsg.startTimestamp).format("MM/DD/YYYY h:mm a") + ". If you are still available, and would like to reopen a session with a different student, click the link below.</p> <a href='https://www.tut-tut.org/tutorRequestsView'>https://www.tut-tut.org/tutorRequestsView</a><p>Sorry for the inconvenience,<br>Tut-Tut</p>"
     };
 
     transporter.sendMail(mailOptions, function(error, info) {

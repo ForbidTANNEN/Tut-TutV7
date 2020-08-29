@@ -1,3 +1,3 @@
-'Your request for '+ tutorRequestInfo.subject +' tutoring request has been accepted, for ' + msgDate + ' at ' + msgTime
+'Your ' + foundMsg.subject + " student has unfortunately cancelled your session on " + dayjs(foundMsg.startTimestamp).format("MM/DD/YYYY h:mm a")
 
-"<p>Hello " + tutorRequestInfo.studentName + ",</p><p>Thank you for booking a tutoring session with Tut-Tut. Please set a reminder for your " + tutorRequestInfo.subject + " tutoring session on " + msgDate + " at " + msgTime + ".</p><p>We look forward to seeing you, <br> Tut-Tut</p>"
+"<p>Hello " + foundMsg.tutor + ",</p><p>Unfortunately, " + foundMsg.studentName + " has cancelled his session, and is unable to make the session at " + dayjs(foundMsg.startTimestamp).format("MM/DD/YYYY h:mm a") + ". If you are still available, and would like to reopen a session with a different student, click the link below.</p> <a href="https://tut-tut.org/tutorRequestsView">https://tut-tut.org/tutorRequestsView</a><p>Sorry for the inconvenience,<br>Tut-Tut</p>"
