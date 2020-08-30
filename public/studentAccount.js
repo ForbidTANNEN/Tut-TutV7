@@ -242,3 +242,9 @@ $('.submitRequestTutor').click(function(event){
   }
   console.log("CALLED CLICK");
 })
+
+$('#submitTutorRequestForm').click(function(){
+  setTimeout(function(){
+      $('.submitRequestTutor').attr("disabled", true);
+}, 100);
+});

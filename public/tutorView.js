@@ -155,3 +155,11 @@ $rows.show().filter(function() {
 //Onload
 
 $('.wholeTable').width($('#noteInput').width());
+
+
+
+$('#tutorSubmit').click(function(){
+  setTimeout(function(){
+      $('#tutorSubmit').attr("disabled", true);
+}, 100);
+});
