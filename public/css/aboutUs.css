@@ -6,6 +6,11 @@
   border-bottom: 1px solid #e9eaea;
 }
 
+.btn-primary{
+  background-color: #f73859;
+  border-color: #f73859;
+}
+
 .logo{
   margin-right: 15px;
 }

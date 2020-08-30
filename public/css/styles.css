@@ -11,6 +11,7 @@ body{
   border: none;
 }
 
+
 .navbar{
   height: 10%;
   border-bottom: 1px solid #e9eaea;
@@ -149,6 +150,14 @@ body{
 .btn-lg{
   border-radius: 0;
   padding: 10px 15px;
+}
+
+.btn-dark{
+  background-color: #f73859 !important;
+  border-color: #f73859 !important;
+}
+.btn-dark:hover {
+  background-color: #d92746 !important;
 }
 
 .tutoredSubText{

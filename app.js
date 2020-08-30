@@ -221,7 +221,9 @@ function CreateGuid() {
 
 
 
-
+app.get("/notAcceptingTutors", function(req, res){
+  res.render("notAcceptingTutors");
+});
 
 
 

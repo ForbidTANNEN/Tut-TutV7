@@ -2,7 +2,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;500&display=swap');
 body{
-  background: #fafafa
+  background: #fafafa;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 /* NAVBAR */
@@ -85,6 +89,10 @@ tr:hover:not(.headTR){
   background: #fafafa;
 }
 
+.btn-primary:hover{
+  background-color: #026ad9 !important;
+}
+
 thead{
   border: 1px solid rgba(0, 0, 0,0.3);
   border-bottom-style: none;
@@ -118,7 +126,8 @@ section{
 }
 
 .navbar-dark{
-  	background: #ffb600 !important;
+  background-image: url("chalkboard.jpg");
+  background-position: center;
 }
 
 
