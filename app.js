@@ -457,7 +457,11 @@ app.get("/studentAccountPage", function(req, res) {
           //   res.render
           // }
 
-          res.render("studentAccountPage", {mssgs: mssgsWithCorrectTime, studentsMssgs: studentMssgsWithCorrectTime, username: req.user.username});
+          var studentMssgBookedCount = JSON.stringify(studentMssgsWithCorrectTime);
+
+          res.render("studentAccountPage", {mssgs: mssgsWithCorrectTime, studentsMssgs: studentMssgsWithCorrectTime, username: req.user.username, studentMssgBookedCount: studentMssgBookedCount});
+
+
         });
         });
     }

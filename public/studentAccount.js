@@ -9,9 +9,26 @@ for (i = 0; i < coll.length; i++) {
 
     //Clicked
     if(clicked === 0){
+      var studentsMssgs = JSON.parse($(".studentsMssgs").val());
+      console.log(studentsMssgs);
+      var bookedSessions = 0;
+      studentsMssgs.forEach(function(msg){
+        if(msg.status === "Booked"){
+          bookedSessions = bookedSessions + 1;
+        }
+      });
+      if(bookedSessions >= 2){
+        alert("Sorry you are only able to have 2 booked session at a time");
+        return;
+      }
+      console.log("STILL WENT");
       clicked = 1;
       $(".content").css("border-style", "solid")
       $(".collapsableDiv").animate({height: "auto"});
+          setTimeout(function(){
+              $('.content').css("max-height", "1000px")
+              requestTutorClick = true;
+        }, 10);
     }
     //Not Clicked
     else{
@@ -20,6 +37,7 @@ for (i = 0; i < coll.length; i++) {
       $(".collapsableDiv").animate({height: "auto"});
     }
 
+    console.log("STILLE CALLEDD");
     var content = this.nextElementSibling;
     if (content.style.maxHeight){
       content.style.maxHeight = null;
@@ -28,6 +46,11 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
+
+// $(".dropDownButtonClass").click(function(){
+//
+//
+// });
 
 //Calender handler
 
@@ -199,15 +222,15 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 
-var requestTutorClick = false;
-$(".dropDownButtonText").click(function(){
-  if(requestTutorClick === false){
-    setTimeout(function(){
-        $('.content').css("max-height", "1000px")
-        requestTutorClick = true;
-  }, 500);
-  }
-});
+// var requestTutorClick = false;
+// $(".dropDownButtonText").click(function(){
+//   if(requestTutorClick === false){
+//     setTimeout(function(){
+//         $('.content').css("max-height", "1000px")
+//         requestTutorClick = true;
+//   }, 500);
+//   }
+// });
 
 
 $('.submitRequestTutor').click(function(event){
