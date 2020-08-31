@@ -175,6 +175,9 @@
       <div class="tbl-content">
         <table cellpadding="0" cellspacing="0" border="0" class=""> <!-- tutorSessionsTable -->
           <input type="hidden" value="<%=studentMssgBookedCount%>" class="studentsMssgs">
+          <%if(studentsMssgs.length < 1){%>
+            <h5>No sessions currently booked. To book your first tutor click the 'request a tutor' button above!</h5>
+          <%}else{%>
           <%studentsMssgs.forEach(function(msg){%>
 
                       <tbody>
@@ -202,7 +205,7 @@
                           </form>
                           <%}%>
               </tr>
-          <%})%>
+          <%})}%>
                     </table>
                   </div>
                   </section>
