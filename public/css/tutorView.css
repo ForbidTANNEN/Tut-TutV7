@@ -7,6 +7,9 @@ body{
 
 /* NAVBAR */
 
+::-webkit-scrollbar {
+    display: none;
+}
 
 .navbar-brand{
   font-size: 1.7rem;
@@ -118,7 +121,8 @@ section{
 }
 
 .navbar-dark{
-  	background: #ffb600 !important;
+  background-image: url("chalkboard.jpg");
+  background-position: center;
 }
 
 
