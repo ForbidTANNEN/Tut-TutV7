@@ -257,8 +257,9 @@ section{
 }
 
 @media all and (max-width: 1450px) {
-
-
+  .content{
+    width: 70% !important;
+  }
 }
 
 #timeZone{
