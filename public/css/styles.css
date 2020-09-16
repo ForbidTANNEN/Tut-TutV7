@@ -27,8 +27,8 @@ body{
 }
 
 .navbar-brand{
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
   font-size: 1.7rem;
 }
 
@@ -98,23 +98,106 @@ body{
   left: 0;
 }
 
-@media only screen and (min-width: 768px)
-.homepage-signup__button {
-    width: 200px;
-    bottom: 3rem;
-    margin-left: calc(50% - 100px);
-}
+
 
 .homepage-signup__button {
     position: absolute;
-    top: 100%;
+    top: 900px;
     left: 20%;
 }
 
 .homepage-signup__button2 {
     position: absolute;
-    top: 100%;
+    top: 900px;
     left: 75%;
+}
+
+.parallax {
+  /* The image used */
+  background-image: url("classroom.jpg");
+
+  /* Set a specific height */
+  min-height:400px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.signupButtonHeader{
+  margin-bottom: 30px;
+}
+
+.tutTutHead{
+  padding-top: 100px;
+  color: #fff;
+}
+
+.missionStatement{
+  padding-top: 15px;
+  color: #fff;
+  font-size: 2.3rem;
+}
+
+@media (min-width:1681px) {
+  .parallax{
+    display: none;
+  }
+}
+@media (max-width:1680px) {
+  .homepage-signup__button {
+    top: 845px !important;
+  }
+  .homepage-signup__button2 {
+      top: 845px !important;
+  }
+  .parallax{
+    display: none;
+  }
+}
+@media (max-width:1550px) {
+  .homepage-signup__button {
+    top: 810px !important;
+  }
+  .homepage-signup__button2 {
+      top: 820px !important;
+  }
+  .parallax{
+    display: none;
+  }
+}
+@media (max-width:1486px) {
+  .homepage-signup__button {
+    top: 770px !important;
+  }
+  .homepage-signup__button2 {
+      top: 770px !important;
+  }
+  .parallax{
+    display: none;
+  }
+}
+@media (max-width:1390px) {
+  .homepage-signup__button {
+    top: 730px !important;
+  }
+  .homepage-signup__button2 {
+      top: 730px !important;
+  }
+  .parallax{
+    display: none;
+  }
+}
+@media (max-width:1350px) {
+  .Section1{
+    display: none;
+  }
+  .parallax{
+    display: block;
+  }
 }
 
 .overlay{
@@ -211,9 +294,11 @@ margin-top: 3%;
 #testimonials {
   padding: 2% 15%;
   text-align: center;
-  background-color: #00a8cc;
+  background-color: rgb(0, 123, 255);
   color: #fff;
 }
+
+
 
 .testimonial-image {
   width: 10%;
@@ -256,6 +341,17 @@ margin-top: 3%;
   }
 }
 
+.card-header{
+  background-color: #fafcff;
+}
+
+.cardHeadText{
+  color: black;
+}
+
+.card{
+  border: 1px solid rgba(0,0,0,.3) !important;
+}
 
 
 .card-body{
@@ -345,11 +441,11 @@ span {
 
 .footer{
   text-align: center;
-  background: #00a8cc;
+  background: rgb(0, 123, 255);
   color: white;
   margin-top: 2%;
 }
 
 .footerText{
-  padding: 4% 10%;
+  padding: 2% 10%;
 }
