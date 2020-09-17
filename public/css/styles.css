@@ -129,11 +129,16 @@ body{
 
 .signupButtonHeader{
   margin-bottom: 30px;
+  width: 30%;
 }
 
 .tutTutHead{
   padding-top: 100px;
   color: #fff;
+}
+
+.tutorName{
+  display: none;
 }
 
 .missionStatement{
@@ -172,6 +177,18 @@ body{
   .parallax{
     display: none;
   }
+  .tutoredSubText{
+    display: none;
+  }
+  .tutoredSubText1{
+    display: none;
+  }
+  .overlay{
+    display: none;
+  }
+  .overlay1{
+    display: none;
+  }
 }
 @media (max-width:1486px) {
   .homepage-signup__button {
@@ -184,7 +201,7 @@ body{
     display: none;
   }
 }
-@media (max-width:1390px) {
+@media (max-width:1364px) {
   .homepage-signup__button {
     top: 730px !important;
   }
@@ -195,21 +212,89 @@ body{
     display: none;
   }
 }
-@media (max-width:1350px) {
+@media (max-width:1290px) {
+  .homepage-signup__button {
+    top: 650px !important;
+  }
+  .homepage-signup__button2 {
+      top: 650px !important;
+  }
+  .parallax{
+    display: none;
+  }
+}
+@media (max-width:1110px) {
+  .homepage-signup__button {
+    top: 590px !important;
+  }
+  .homepage-signup__button2 {
+      top: 590px !important;
+  }
+  .parallax{
+    display: none;
+  }
+}
+@media (max-width:1000px) {
+  .homepage-signup__button {
+    top: 730px !important;
+  }
+  .homepage-signup__button2 {
+      top: 730px !important;
+  }
+  .parallax{
+    display: none;
+  }
+}
+@media (max-width:1000px) {
   .Section1{
     display: none;
   }
   .parallax{
     display: block;
   }
+}
+@media (max-width:790px) {
   .main-nav{
     display: none;
   }
   .mobile-nav{
     display: block;
   }
+  .slogan{
+    font-size: 2rem;
+  }
+  .slogan1{
+    font-size: 1.5rem;
+  }
+  .missionStatement{
+    font-size: 1.5rem;
+    padding-bottom: 20px;
+  }
+  .honorRole{
+    font-size: 1.4rem;
+  }
+  .Section2{
+    height: 60px !important;
+  }
+  .testimonial-text{
+    font-size: 1.3rem !important;
+  }
+  .testimonial-image{
+    width: 30% !important;
+  }
+  .tutorNameAndState{
+    display: none;
+  }
+  .tutorName{
+    display: block;
+  }
 }
 
+@media (max-height:500px) {
+  .navbar{
+    height: 12%;
+  }
+}
 
 .overlay{
   position: absolute;
@@ -257,7 +342,7 @@ body{
 .tutoredSubText{
   position: absolute;
   left: 13%;
-  top: 85%;
+  top: 80%;
   color: white;
   opacity: 0;
 }
@@ -265,7 +350,7 @@ body{
 .tutoredSubText1{
   position: absolute;
   right: 13%;
-  top: 85%;
+  top: 80%;
   color: white;
   opacity: 0;
 }
