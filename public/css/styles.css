@@ -142,6 +142,10 @@ body{
   font-size: 2.3rem;
 }
 
+.mobile-nav{
+  display: none;
+}
+
 @media (min-width:1681px) {
   .parallax{
     display: none;
@@ -198,7 +202,14 @@ body{
   .parallax{
     display: block;
   }
+  .main-nav{
+    display: none;
+  }
+  .mobile-nav{
+    display: block;
+  }
 }
+
 
 .overlay{
   position: absolute;
@@ -418,6 +429,10 @@ margin-top: 3%;
 
 ol {
   list-style: none;
+}
+
+.mobile-dropdown{
+   list-style-type: none;
 }
 
 ol li {
