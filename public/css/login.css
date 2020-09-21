@@ -13,6 +13,19 @@ body {
   background-color: #f5f5f5;
 }
 
+.mobile-nav{
+  display: none;
+}
+
+@media only screen and (max-width:790px) {
+  .mobile-nav{
+    display: block;
+  }
+  .main-nav{
+    display: none;
+  }
+}
+
 .form-signin {
   width: 100%;
   max-width: 330px;
