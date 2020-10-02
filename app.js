@@ -225,7 +225,9 @@ app.get("/notAcceptingTutors", function(req, res){
   res.render("notAcceptingTutors");
 });
 
-
+app.get("/TOS-PrivacyPolicy", function(req, res){
+  res.render("TOS-PrivacyPolicy");
+})
 
 
 //LOGIN LOGOUT

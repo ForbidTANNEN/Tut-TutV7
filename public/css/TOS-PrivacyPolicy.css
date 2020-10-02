@@ -1,0 +1,29 @@
+/*
+.mobile-nav{
+  display: none;
+}
+
+@media only screen and (max-width:790px) {
+  .mobile-nav{
+    display: block;
+  }
+  .main-nav{
+    display: none;
+  }
+} */
+
+
+.loginNav{
+  margin-right: 15px;
+}
+
+.border{
+  padding: 0 300px;
+}
+
+.Text{
+  margin-top: 140px;
+  margin-bottom: 140px;
+  /* text-align: center; */
+  font-family: 'Roboto', sans-serif;
+}
