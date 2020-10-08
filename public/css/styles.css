@@ -389,9 +389,9 @@ margin-top: 3%;
 /* Testimonials */
 
 #testimonials {
-  padding: 2% 15%;
+  padding: 1% 15%;
   text-align: center;
-  background-color: rgb(0, 123, 255);
+  background-color: rgb(30 138 255);
   color: #fff;
 }
 
@@ -542,7 +542,7 @@ span {
 
 .footer{
   text-align: center;
-  background: rgb(0, 123, 255);
+  background: rgb(30 138 255);
   color: white;
   margin-top: 2%;
 }
