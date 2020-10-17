@@ -439,7 +439,7 @@ margin-top: 3%;
 }
 
 .card-header{
-  background-color: #fafcff;
+  background-color: #f0f0f0;
 }
 
 .cardHeadText{
@@ -448,6 +448,7 @@ margin-top: 3%;
 
 .card{
   border: 1px solid rgba(0,0,0,.3) !important;
+  box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.3);
 }
 
 
@@ -458,6 +459,7 @@ margin-top: 3%;
 
 .fa-apple-alt{
   padding-right: 10px;
+  margin-left: 20px;
 }
 
 .price-box {

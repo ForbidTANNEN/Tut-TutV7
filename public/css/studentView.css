@@ -101,6 +101,12 @@ thead{
   background: rgb(0, 123, 255);
 }
 
+.widthOfTable{
+  width: 100%;
+  margin-top: 50px;
+  text-align: center;
+}
+
 .headTR{
   border-radius: 10px;
 }

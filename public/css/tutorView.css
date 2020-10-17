@@ -251,6 +251,11 @@ section{
   width: 50%;
 }
 
+.centerSubjectDiv{
+  width: 100%;
+  text-align: center;
+}
+
 @media all and (max-width: 1450px) {
 
 

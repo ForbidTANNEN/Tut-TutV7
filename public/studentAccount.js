@@ -248,3 +248,15 @@ $('#submitTutorRequestForm').click(function(){
       $('.submitRequestTutor').attr("disabled", true);
 }, 100);
 });
+
+
+
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+const alerts = urlParams.get('alert')
+if(alerts === "alreadyBooked"){
+  alert("Sorry, this appointment is already booked!");
+}
+console.log(product);
