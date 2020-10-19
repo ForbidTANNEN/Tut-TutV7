@@ -1,4 +1,3 @@
-
 // Nav Bar shadow
 $(window).scroll(function() {
     if ($(window).scrollTop() > 10) {
