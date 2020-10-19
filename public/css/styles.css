@@ -40,16 +40,17 @@ body{
 .slogan{
   text-align: center;
   font-size: 3.5rem;
+  margin: 3% 0;
   font-family: 'Roboto', sans-serif;
   letter-spacing: .15rem;
-  margin-top: 1.2%;
+  margin-top: 3%;
   margin-bottom: 0;
 }
 
 .slogan1{
   text-align: center;
   font-size: 2.5rem;
-  margin: 0% 0 0.9% 0;
+  margin: 0.5% 0 1.5% 0;
   font-family: 'Roboto', sans-serif;
   letter-spacing: .15rem;
   color: red;
@@ -365,7 +366,7 @@ body{
   height: 100px;
 line-height: 100px;
 text-align: center;
-margin-top: 2%;
+margin-top: 3%;
 }
 
 .tutoringYouCanTrustFooter{
@@ -380,6 +381,7 @@ margin-top: 2%;
   background-color: #00a8cc;
   padding: 3% 10%;
 }
+
 */
 
 
@@ -549,4 +551,45 @@ span {
 
 .footerText{
   padding: 2% 10%;
+}
+
+.notificationText{
+  margin-bottom: 0;
+  font-size: 1.2rem;
+}
+
+.notification{
+  text-align: center;
+  padding: 20px 0 10px 0;
+  margin-bottom: 0 !important;
+  background-color: yellow;
+}
+
+.TopImage{
+  height: 704.8458px;
+  background-image: url("Teaganpic.jpg");
+  background-size: 1920px 704.8458px;
+  text-align: center;
+  color: white;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.imageHeader{
+  position: relative;
+  top: 35%;
+  font-size: 3rem;
+  text-shadow: 2px 2px black;
+}
+
+.imageHeader2{
+  position: relative;
+  top: 38%;
+  font-size: 3rem;
+  color: red;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 2px 2px black;
 }
