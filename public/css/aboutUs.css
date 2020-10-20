@@ -34,7 +34,7 @@
 
 .parallax {
   /* The image used */
-  background-image: url("classroom.jpg");
+  background-image: url("AboutPic.JPG");
 
   /* Set a specific height */
   min-height: 700px;
@@ -57,6 +57,11 @@
 .missionHr{
   border-color: white;
   width: 20%;
+}
+
+.missionHr2{
+  border-color: black;
+  width: 32%;
 }
 
 .tutTutHead{
@@ -107,7 +112,7 @@
 .contact{
   color: white;
   padding-top: 33px;
-  font-size: 1.2rem;
+  font-size: 2.2rem;
 }
 
 
@@ -115,9 +120,8 @@
 /* TUTOR SLIDESHOW */
 
 .meetTutors{
-  font-family: 'Noto Sans JP', sans-serif;
   font-weight: 300;
-  font-size: 2.1rem;
+  font-size: 2.2rem;
   color: #000;
 }
 
@@ -126,6 +130,7 @@
   text-align: center;
   background-color: #fff;
   color: #2087a8;
+  height: 550px;
 }
 
 .testimonial-image {
@@ -151,7 +156,7 @@
 
 .testimonial-text{
   font-family: "Montserrat";
-  font-size: 2.2rem;
+  font-size: 1.5rem;
 }
 
 .carousel-control-prev-icon,
@@ -205,7 +210,8 @@
 
 .founderListItem{
   display: inline-block;
-  width: 10%;
+  width: 300px;
+  height: 300px;
   margin: 2%;
 }
 
@@ -223,11 +229,13 @@
 }
 
 .founderReasonDiv{
-  padding: 0 32%;
+  padding: 2% 25%;
+  text-align: center;
 }
 
 .founderReasonText{
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  text-indent: 4rem;
 }
 
 
@@ -238,13 +246,14 @@
   background-color: blue;
   background-image: url("chalkboard.jpg");
   text-align: center;
-  padding-top: 30px;
+  padding-top: 20px;
   margin-top: 70px;
+  padding-bottom: 10px;
 }
 
 .footerText{
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #fff;
 }
