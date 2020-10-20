@@ -434,7 +434,7 @@ margin-top: 3%;
 
 @media only screen and (max-width: 1501px) {
   #pricing{
-    padding: 50px 0 100px 0;
+    padding: 50px 0 0 0;
     text-align: center;
   }
 }
@@ -570,6 +570,7 @@ span {
   position: relative;
   left: 34%;
   top: 10px;
+  margin-bottom: 20px;
   width: 32%;
   box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.4);
 }
