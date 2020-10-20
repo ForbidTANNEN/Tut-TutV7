@@ -20,6 +20,7 @@ body{
 
 .logo{
   margin-right: 15px;
+  padding-top: 5px;
 }
 
 .navbar-nav > li{
@@ -565,17 +566,16 @@ span {
   background-color: yellow;
 }
 
-.TopImage{
-  height: 704.8458px;
-  background-image: url("Teaganpic.jpg");
-  background-size: 1920px 704.8458px;
-  text-align: center;
-  color: white;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  text-align: center;
+.signupPricing{
+  position: relative;
+  left: 34%;
+  top: 10px;
+  width: 32%;
+  box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.4);
+}
+
+.topPricing{
+    position: relative;
 }
 
 .imageHeader{
@@ -591,5 +591,5 @@ span {
   font-size: 3rem;
   color: red;
   font-family: 'Roboto', sans-serif;
-  text-shadow: 2px 2px black;
+  text-shadow: 1.5px 1.5px black;
 }

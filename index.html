@@ -8,7 +8,7 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- css sheet -->
-  <link rel="stylesheet" href="css/styles.css">
+
   <!-- google fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Shadows+Into+Light&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -20,6 +20,21 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/08afeeffcd.js" crossorigin="anonymous"></script>
   <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <style>
+  .TopImage{
+    height: 704.8458px;
+    background-image: url("images/Teaganpic.JPG");
+    background-size: 1920px 704.8458px;
+    text-align: center;
+    color: white;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+  }
+  </style>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -32,17 +47,19 @@
       <!-- Nav Bar -->
       <nav class="navbar main-nav navbar-expand-lg navbar-light bg-light fixed-top">
         <a href="/">
-        <img src="images/Logo.png" alt="" height="80" width="80" class="logo">
+        <img src="images/train-logo.png" alt="" height="105" width="140" class="logo">
         </a>
-        <a class="navbar-brand" href="/">Tut-Tut</a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
+            <li>
+              <a class="nav-link" href="/notAcceptingTutors">Become a Tutor</a>
+            </li>
             <li class="nav-item mid-button">
               <a class="nav-link" href="/aboutUs">About</a>
             </li>
             <li>
-              <a class="nav-link" href="/login">Login</a>
+              <a class="nav-link navbar-custom" href="/login">Login</a>
             </li>
             <li class="nav-item right-button ">
               <form action="/signup">
@@ -120,9 +137,14 @@
 
 
       <section id="pricing">
+        <div class="topPricing">
 
         <h2>TUTORING YOU CAN TRUST</h2>
         <h4 class="tutoringYouCanTrustFooter"><i>Our goal is to offer free tutoring to help your child achieve success</i></h4>
+        <form action="/signup" method="get">
+        <button class="btn btn-lg btn-block btn-dark signupPricing" type="submit">Sign Up Now</button>
+      </form>
+    </div>
         <!-- <h6>Our goal is to have a completely free platform where high school students are able to give back to the community by helping your child achieve success</h6> -->
 
 
@@ -139,9 +161,6 @@
                 <p><i class="fas fa-apple-alt fa-xs"></i>High School Honor Role Students</p>
                 <p><i class="fas fa-apple-alt fa-xs"></i>Between 9-12th Grade</p>
                 <p><i class="fas fa-apple-alt fa-xs"></i>Attending Elite Private Schools or Top-Ranked High Schools</p>
-                <form action="/signup" method="get">
-                  <button class="btn btn-lg btn-block btn-dark" type="submit">Sign Up</button>
-                </form>
               </div>
             </div>
           </div>
@@ -157,9 +176,6 @@
                 <p><i class="fas fa-apple-alt fa-xs"></i>Have a Wide Variety of Tutors That Can Teach Any Subject</p>
                 <p><i class="fas fa-apple-alt fa-xs"></i>Communicate Goals and Achievements With Parents</p>
                 <p><i class="fas fa-apple-alt fa-xs"></i>Unlimited Free Tutoring Sessions!</p>
-                <form action="/signup" method="get">
-                <button class="btn btn-lg btn-block btn-dark" type="submit">Sign Up</button>
-              </form>
               </div>
             </div>
           </div>
