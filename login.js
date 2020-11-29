@@ -149,7 +149,7 @@ module.exports = function(app, User, passport) {
 
         if (!user) {
           res.render("login", {
-            loginFailure: info.message
+            loginFailure: info.message + " (email is case sensitive)"
           });
         }
 

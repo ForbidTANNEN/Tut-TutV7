@@ -175,7 +175,7 @@ app.post("/resetPassword", function(req, res){
   User.findOne({username: req.body.email}, function(err, foundEmail){
     if(foundEmail === null){
       console.log("NULLLL");
-      res.render("resetPassword", {failure: "Email not found"})
+      res.render("resetPassword", {failure: "Email not found (email is case sensitive)"})
     }else {
       console.log("HAPYYYYY");
       var guid = CreateGuid();
