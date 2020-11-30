@@ -394,8 +394,8 @@ margin-top: 3%;
   text-align: center;
   background-color: rgb(30 138 255);
   color: #fff;
+  height: 300px;
 }
-
 
 
 .testimonial-image {
@@ -405,8 +405,13 @@ margin-top: 3%;
 }
 
 .carousel-item {
-  padding: 7% 15%;
+  padding: 4% 15%;
 }
+
+.natalieTestimonial{
+  margin-top: 20px;
+}
+
 
 #press {
   background-color: #00a8cc;
@@ -421,7 +426,7 @@ margin-top: 3%;
 
 .testimonial-text{
   font-family: "Montserrat";
-  font-size: 2.2rem;
+  font-size: 1.8rem;
 }
 
 
