@@ -324,7 +324,7 @@ app.post("/addTutorTimeSlot", function(req, res){
   if(timeInput === 12 && req.body.amPm === "AM"){
     timeInput = 0;
   }
-
+  console.log("THIS--------------" + req.body.date);
   console.log(req.body.date + "-" + timeInput + "YYYY-MM-DD-H");
   console.log(dayjs(req.body.date + "-" + timeInput, "YYYY-MM-DD-H"));
 

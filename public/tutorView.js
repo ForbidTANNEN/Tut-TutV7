@@ -163,3 +163,11 @@ $('#tutorSubmit').click(function(){
       $('#tutorSubmit').attr("disabled", true);
 }, 100);
 });
+
+if(navigator.vendor ==  "Apple Computer, Inc." && !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))){
+  alert("At this time Safari on Desktop is not yet supported. Sorry for the inconvenience!")
+  window.location.href = "https://www.tut-tut.org/login";
+}
+
+  // alert("At this time Safari on Desktop is not yet supported. Sorry for the inconvenience!")
+  // window.location.href = "https://www.tut-tut.org/login";
