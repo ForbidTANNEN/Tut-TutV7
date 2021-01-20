@@ -76,7 +76,7 @@ const userSchema = new mongoose.Schema({
   tutor: false,
   accountCreationTime: Date,
   vcLink: String,
-
+  language: String,
   GFname: String,
   GLname: String,
   Phone: String,
@@ -97,6 +97,7 @@ const tutorRequestSchema = new mongoose.Schema({
   requestSendTime: Date,
   startTimestamp: Date,
   subject: String,
+  language: String,
   tutorSubject: Array,
   status: String,
   studentId: String,
@@ -325,11 +326,13 @@ app.post("/addTutorTimeSlot", function(req, res){
     timeInput = 0;
   }
   console.log("THIS--------------" + req.body.time);
-
-  var tutorRequest = new TutorRequest({tutor: req.user.SFname, note: "",sentReminderEmail: 'false', vcLink: req.user.vcLink, tutorID: req.user._id, tutorEmail: req.user.username, status: "Available", tutorSubject: subjectsArray, startTimestamp: dayjs(req.body.date + "-" + timeInput, "YYYY-MM-DD-H").valueOf()});
+User.findOne({_id: req.user._id}).exec(function(err, foundUser){
+  console.log(foundUser);
+  console.log(foundUser.language);
+  var tutorRequest = new TutorRequest({tutor: req.user.SFname, note: "",sentReminderEmail: 'false', vcLink: req.user.vcLink, language: foundUser.language, tutorID: req.user._id, tutorEmail: req.user.username, status: "Available", tutorSubject: subjectsArray, startTimestamp: dayjs(req.body.date + "-" + timeInput, "YYYY-MM-DD-H").valueOf()});
 
   tutorRequest.save();
-
+});
   res.redirect("/tutorRequestsView")
 }else{
   res.redirect("/login")

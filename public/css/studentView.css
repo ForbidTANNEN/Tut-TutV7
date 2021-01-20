@@ -185,7 +185,7 @@ section{
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   text-align: center;
-  width: 40%;
+  width: 70%;
   margin: 0 auto;
   position: relative;
   border-style: none;
@@ -297,7 +297,7 @@ section{
 
 .wholeTable{
   position: relative;
-  left: 18%;
+  left: 18.8%;
   bottom: 34px;
 }
 

@@ -57,6 +57,7 @@ module.exports = function(app, User, passport) {
               GFname: req.body.GFname,
               GLname: req.body.GLname,
               Phone: req.body.Phone,
+              language: "English",
               SFname: req.body.SFname,
               SLname: req.body.SLname,
               School: req.body.School,
