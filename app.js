@@ -411,9 +411,12 @@ app.get("/studentAccountPage", function(req, res) {
       // TutorRequest.find({ startTimestamp: { $lt: Date.now() }}).exec(function(err, userObj){
       //      console.log(userObj);
       // });
+const threeHoursInMillis = 3*60*60*1000;
 
-      TutorRequest.find({ $and: [ { startTimestamp: { $gt: Date.now() } }, { status: "Available" } ] }).sort({startTimestamp: 1}).exec(function(err, foundMsgs) {
+      TutorRequest.find({ $and: [ { startTimestamp: { $gt: Date.now() + threeHoursInMillis} }, { status: "Available" } ] }).sort({startTimestamp: 1}).exec(function(err, foundMsgs) {
         TutorRequest.find({studentId: req.user._id}).sort({importance: 1 ,startTimestamp: 1}).exec(function(err, studentsMssgs){
+
+          console.log(Date.now());
 
 
           var mssgsWithCorrectTime = [];
@@ -655,7 +658,7 @@ console.log(Date.now() + 3600000);
 
 let hourBeforeEmails = cron.schedule('* * * * *', () => {
 
-  TutorRequest.find({sentReminderEmail : 'false', startTimestamp: {$lt: Date.now() + 3600000}}, function(err, foundMsgs){
+  TutorRequest.find({sentReminderEmail : 'false', startTimestamp: {$lt: Date.now() + 3600000}, status: "Booked"}, function(err, foundMsgs){
   console.log(foundMsgs);
   foundMsgs.forEach(function(msg){
     if(msg.studentUsername !== null || msg.studentUsername !== ""){
