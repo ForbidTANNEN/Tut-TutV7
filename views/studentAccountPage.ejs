@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Tut-Tut Account</title>
+  <link rel="icon" type="image/vnd.microsoft.icon" href="images/favicon.ico" />
   <!-- Bootstrap -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
@@ -169,7 +170,7 @@
               <th>Subject</th>
               <th>Tutor</th>
               <th>Tutor Email</th>
-              <th>Note</th>
+              <th class="note">Note</th>
               <th>Virtual Classroom</th>
               <th>Status</th>
               <th>Cancel</th>
@@ -194,7 +195,7 @@
                           <td class="tutorSessionTD"><%=msg.tutor%></td>
                           <td class="tutorSessionTD"><%=msg.tutorEmail%></td>
                           <%var previewNote = msg.note.substring(0,20) + "..."%>
-                          <td class="tutorSessionTD"><a href="" id="noteText" onclick="return alert('<%=msg.note%>')"><%=previewNote%></a></td>
+                          <td class="tutorSessionTD note"><a href="" id="noteText" onclick="return alert('<%=msg.note%>')"><%=previewNote%></a></td>
                           <td class="tutorSessionTD"><p onclick="zoomLink('<%=msg.vcLink%>')" class="zLink">Zoom Link</p></td>
                           <td class="tutorSessionTD"><%=msg.status%></td>
                           <%if(msg.status === "Canceled" || msg.status === "Completed"){%>

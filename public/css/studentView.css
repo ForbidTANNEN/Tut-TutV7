@@ -339,8 +339,12 @@ section{
 }
 
 .zLink{
-  cursor:pointer;
+    cursor:pointer;
      color:#007bff;
-     text-decoration:underline;
+     padding-top: 5px;
+     margin-bottom: 0.5rem;
+}
 
+.note{
+  padding-left: 3%;
 }
