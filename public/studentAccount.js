@@ -259,4 +259,3 @@ const alerts = urlParams.get('alert')
 if(alerts === "alreadyBooked"){
   alert("Sorry, this appointment is already booked!");
 }
-console.log(product);

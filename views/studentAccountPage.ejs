@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- css sheet -->
   <link rel="stylesheet" href="css/studentView.css">
+
+  <!--confirm alert-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 </head>
 
 <body>
@@ -126,7 +130,6 @@
                         <td class=""><%=msg.startTimeString%></td>
                         <td><%=msg.tutor%></td>
                         <td><%=msg.language%></td>
-
                       </tr>
                       <%})%>
                       <input class="tableInput" name="tableInput" type="hidden" name="" value="">
@@ -183,19 +186,16 @@
             </div>
           <%}else{%>
           <%studentsMssgs.forEach(function(msg){%>
-
                       <tbody>
                         <tr class="tutorSessionTR">
-
                           <td class="tutorSessionTD"><%=msg.startDateString%></td>
                           <td class="tutorSessionTD"><%=msg.startTimeString%></td>
-
                           <td class="tutorSessionTD"><%=msg.subject%> / <%=msg.subTopic%></td>
                           <td class="tutorSessionTD"><%=msg.tutor%></td>
                           <td class="tutorSessionTD"><%=msg.tutorEmail%></td>
                           <%var previewNote = msg.note.substring(0,20) + "..."%>
                           <td class="tutorSessionTD"><a href="" id="noteText" onclick="return alert('<%=msg.note%>')"><%=previewNote%></a></td>
-                          <td class="tutorSessionTD"><a href="<%=msg.vcLink%>">Zoom Link</a></td>
+                          <td class="tutorSessionTD"><p onclick="zoomLink('<%=msg.vcLink%>')" class="zLink">Zoom Link</p></td>
                           <td class="tutorSessionTD"><%=msg.status%></td>
                           <%if(msg.status === "Canceled" || msg.status === "Completed"){%>
                           <form id="cancelForm" action="/cancelSession" method="post">
@@ -217,6 +217,21 @@
               </div>
 
               <script src="studentAccount.js"></script>
+<script>
+function zoomLink(zLink) {
+  $.alert({
+      title: "Notice",
+      columnClass: 'col-md-12',
+      theme: 'supervan',
+      content: "Tut-Tut wishes you a good time! If your tutor is not immediately present, please wait at least five minutes for your tutor to join the zoom. If they disconnect during the session, please allow 5 minutes for them to join back, as it is most likely technical issues. If any problems arise please contact support@tut-tut.org",
+      onDestroy: function () {
+      window.location.href = zLink;
+  }});
+}
+</script>
+
+
+
 </body>
 
 </html>
