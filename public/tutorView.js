@@ -171,3 +171,54 @@ if(navigator.vendor ==  "Apple Computer, Inc." && !(/Android|webOS|iPhone|iPad|i
 
   // alert("At this time Safari on Desktop is not yet supported. Sorry for the inconvenience!")
   // window.location.href = "https://www.tut-tut.org/login";
+
+
+var amDeleted = false;
+var pmSelected = false;
+  $("#startTimeAmPmDD").change(function () {
+
+    $("#endTimeDD").empty();
+
+    if($(this).val() == "AM"){
+      pmSelected = false;
+      if(amDeleted === true){
+        amDeleted = false;
+        $('.endTimeAmPmDD').append($('<option>', {value:"AM",
+          text: "AM", id: "endTimeAm"
+          }));
+      }
+      for (var i = 0; i < 12; i++) {
+        $('#endTimeDD').append($('<option>', {value:i+1,
+          text: i+1
+          }));
+      }
+    };
+    if($(this).val() == "PM"){
+      pmSelected = true;
+      amDeleted = true;
+      $("#endTimeAm").remove();
+      populatePM();
+    }
+
+  });
+
+
+  $("#startTimeDD").change(function () {
+    if(pmSelected == true){
+      $("#endTimeDD").empty();
+      populatePM();
+    }
+  });
+
+
+  function populatePM(){
+    var startTime = parseInt($("#startTimeDD").val());
+    var differenceBtwnTimes = 12 - startTime
+    console.log(startTime);
+    for (var i = 0; i < differenceBtwnTimes; i++) {
+      var time = i+startTime+1
+      $('#endTimeDD').append($('<option>', {value:time,
+        text: time
+        }));
+    }
+  }

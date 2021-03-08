@@ -49,26 +49,58 @@
           <div class="form-border">
             <p>Please only select dates that are greater than today</p>
               <div class="formTextInput">
-                <p class="formText">Available Time (PT):</p>
-                <input class="" id="calendarPicker" type="date" name="date" maxlength="" placeholder="yyyy/dd/mm" pattern="(^(((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[012]))|((29|30|31)[\/](0[13578]|1[02]))|((29|30)[\/](0[4,6,9]|11)))[\/](19|[2-9][0-9])\d\d$)|(^29[\/]02[\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)" required checked>
-                <select class="" name="time" required>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
-                <select class="" name="amPm">
-                  <option value="AM">AM</option>
-                  <option value="PM">PM</option>
-                </select>
+                <div class="DateSelect">
+                  <p class="formText">Available Date (PT):</p>
+                  <input class="" id="calendarPicker" type="date" name="date" maxlength="" placeholder="yyyy/dd/mm" pattern="(^(((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[012]))|((29|30|31)[\/](0[13578]|1[02]))|((29|30)[\/](0[4,6,9]|11)))[\/](19|[2-9][0-9])\d\d$)|(^29[\/]02[\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)" required checked>
+                  <br>
+                </div>
+                <div class="timeText">
+                  <p>Select the range of time that you are available. Your 45 minute tutoring session will fall sometime between the start and end time.</p>
+                </div>
+
+                <div class="startTime">
+                  <p class="formText">Start time:</p>
+                  <select id="startTimeDD" name="time" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  <select id="startTimeAmPmDD" name="amPm">
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                  </select>
+                </div>
+                <div class="endTime">
+                  <p class="formText">End time:</p>
+                  <select id="endTimeDD" name="endTime" required>
+                    <option value="1">1</option>
+                    <option value="1">2</option>
+                    <option value="1">3</option>
+                    <option value="1">4</option>
+                    <option value="1">5</option>
+                    <option value="1">6</option>
+                    <option value="1">7</option>
+                    <option value="1">8</option>
+                    <option value="1">9</option>
+                    <option value="1">10</option>
+                    <option value="1">11</option>
+                    <option value="1">12</option>
+                  </select>
+                  <select class="endTimeAmPmDD" name="endAmPm">
+                    <option id="endTimeAm"value="AM">AM</option>
+                    <option value="PM">PM</option>
+                  </select>
+                </div>
+
                 <hr class="invHr">
               </div>
               <h5>Which subjects would you want to tutor:</h5>
