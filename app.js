@@ -318,6 +318,7 @@ app.post("/addTutorTimeSlot", function(req, res){
   }
 
   var timeInput = Number(req.body.time);
+  var endTimeInput = Number(req.body.endTime)
 
   if(timeInput < 12 && req.body.amPm === "PM"){
     timeInput = timeInput + 12;
@@ -325,14 +326,28 @@ app.post("/addTutorTimeSlot", function(req, res){
   if(timeInput === 12 && req.body.amPm === "AM"){
     timeInput = 0;
   }
-  console.log("THIS--------------" + req.body.time);
-User.findOne({_id: req.user._id}).exec(function(err, foundUser){
-  console.log(foundUser);
-  console.log(foundUser.language);
-  var tutorRequest = new TutorRequest({tutor: req.user.SFname, note: "",sentReminderEmail: 'false', vcLink: req.user.vcLink, language: foundUser.language, tutorID: req.user._id, tutorEmail: req.user.username, status: "Available", tutorSubject: subjectsArray, startTimestamp: dayjs(req.body.date + "-" + timeInput, "YYYY-MM-DD-H").valueOf()});
 
-  tutorRequest.save();
-});
+  if(endTimeInput < 12 && req.body.amPm === "PM"){
+    endTimeInput = endTimeInput + 12;
+  }
+  if(endTimeInput === 12 && req.body.amPm === "AM"){
+    endTimeInput = 0;
+  }
+
+var createSessionLoop = endTimeInput-timeInput
+
+
+
+
+  User.findOne({_id: req.user._id}).exec(function(err, foundUser){
+    for (var z = 0; z < createSessionLoop; z++) {
+    added = timeInput+z;
+    console.log("=========" + added);
+    var tutorRequest = new TutorRequest({tutor: req.user.SFname, note: "",sentReminderEmail: 'false', vcLink: req.user.vcLink, language: foundUser.language, tutorID: req.user._id, tutorEmail: req.user.username, status: "Available", tutorSubject: subjectsArray, startTimestamp: dayjs(req.body.date + "-" + added, "YYYY-MM-DD-H").valueOf()});
+
+    tutorRequest.save();
+  }
+  });
   res.redirect("/tutorRequestsView")
 }else{
   res.redirect("/login")
@@ -340,7 +355,14 @@ User.findOne({_id: req.user._id}).exec(function(err, foundUser){
 
 });
 
-
+// function convertToMillitary(timeInputVal){
+//   if(timeInputVal < 12 && req.body.amPm === "PM"){
+//     timeInputVal = timeInputVal + 12;
+//   }
+//   if(timeInputVal === 12 && req.body.amPm === "AM"){
+//     timeInputVal = 0;
+//   }
+// }
 
 
 
