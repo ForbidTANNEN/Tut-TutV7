@@ -150,6 +150,7 @@
              <th>Time (PT)</th>
              <th>Subject</th>
              <th>Student</th>
+             <th>Grade</th>
              <th>Student Email</th>
              <th>Note</th>
              <th>Virtual Classroom</th>
@@ -171,6 +172,7 @@
 
                          <td class="tutorSessionTD"><%=msg.subject%> / <%=msg.subTopic%></td>
                          <td class="tutorSessionTD"><%=msg.studentName%></td>
+                         <td class="tutorSessionTD"><%=msg.grade%></td>
                          <td class="tutorSessionTD"><%=msg.studentUsername%></td>
                          <%if(msg.note.length == 0){}else{var previewNote = msg.note.substring(0,20) + "..."}%>
                          <td class="tutorSessionTD"><a href="" id="noteText" onclick="return alert('<%=msg.note%>')"><%=previewNote%></a></td>

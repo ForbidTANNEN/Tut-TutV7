@@ -109,7 +109,8 @@ const tutorRequestSchema = new mongoose.Schema({
   studentUsername: String,
   studentName: String,
   vcLink: String,
-  sentReminderEmail: String
+  sentReminderEmail: String,
+  sessionGroupId: String
 });
 
 
@@ -337,13 +338,13 @@ app.post("/addTutorTimeSlot", function(req, res){
 var createSessionLoop = endTimeInput-timeInput
 
 
-
+var sessionGuid = CreateGuid();
 
   User.findOne({_id: req.user._id}).exec(function(err, foundUser){
     for (var z = 0; z < createSessionLoop; z++) {
     added = timeInput+z;
     console.log("=========" + added);
-    var tutorRequest = new TutorRequest({tutor: req.user.SFname, note: "",sentReminderEmail: 'false', vcLink: req.user.vcLink, language: foundUser.language, tutorID: req.user._id, tutorEmail: req.user.username, status: "Available", tutorSubject: subjectsArray, startTimestamp: dayjs(req.body.date + "-" + added, "YYYY-MM-DD-H").valueOf()});
+    var tutorRequest = new TutorRequest({tutor: req.user.SFname, note: "",sentReminderEmail: 'false', vcLink: req.user.vcLink, language: foundUser.language, tutorID: req.user._id, tutorEmail: req.user.username, status: "Available", sessionGroupId: sessionGuid,tutorSubject: subjectsArray, startTimestamp: dayjs(req.body.date + "-" + added, "YYYY-MM-DD-H").valueOf()});
 
     tutorRequest.save();
   }
@@ -681,6 +682,7 @@ console.log(Date.now() + 3600000);
 let hourBeforeEmails = cron.schedule('* * * * *', () => {
 
   TutorRequest.find({sentReminderEmail : 'false', startTimestamp: {$lt: Date.now() + 3600000}, status: "Booked"}, function(err, foundMsgs){
+    if(foundMsgs != null){
   console.log(foundMsgs);
   foundMsgs.forEach(function(msg){
     if(msg.studentUsername !== null || msg.studentUsername !== ""){
@@ -714,6 +716,7 @@ let hourBeforeEmails = cron.schedule('* * * * *', () => {
     });
   }
   });
+}
 });
 
 TutorRequest.update({sentReminderEmail : 'false', startTimestamp: {$lt: Date.now() + 3600000}}, {sentReminderEmail: 'true'}, {multi: true},function(err, doc){
