@@ -518,6 +518,13 @@ app.get("/aboutUs", function(req, res){
   res.render("aboutUs");
 });
 
+app.get("/admin", function(req, res){
+  User.countDocuments({age:{$gt:4,$lt:13}}).exec(function(err, numberOfStudents){
+    res.render("admin", {numberOfStudents: numberOfStudents});
+  });
+
+});
+
 //Request Tutor
 
 
@@ -690,7 +697,7 @@ let hourBeforeEmails = cron.schedule('* * * * *', () => {
       from: 'support@tut-tut.org',
       to: msg.studentUsername,
       subject: 'Tut-Tut Tutoring',
-      html: "<p>Hello " + msg.studentName + ",</p>" + "<p>This is a 1-hour reminder for your " + msg.subject + " session at " + dayjs(msg.startTimestamp).format("MM/DD/YYYY h:mm a") + ".</p> <p>See you soon,<br>Tut-Tut</p>"
+      html: "<p>Hello " + msg.studentName + ",</p>" + "<p>This is a 1-hour reminder for your " + msg.subject + " session at " + dayjs(msg.startTimestamp).format("MM/DD/YYYY h:mm a") + ". The zoom link for your session is: "+ msg.vcLink+"</p><p>If you run into any issues, feel free to reply to this email chain for help.</p><p>See you soon,<br>Tut-Tut</p>"
     };
 
     transporter.sendMail(mailOptions, function(error, info) {
@@ -704,7 +711,7 @@ let hourBeforeEmails = cron.schedule('* * * * *', () => {
       from: 'support@tut-tut.org',
       to: msg.tutorEmail,
       subject: 'Tut-Tut Tutoring',
-      html: "<p>Hello " + msg.tutor + ",</p>" + "<p>This is a 1-hour reminder for your " + msg.subject + " session at " + dayjs(msg.startTimestamp).format("MM/DD/YYYY h:mm a") + ".</p> <p>See you soon,<br>Tut-Tut</p>"
+      html: "<p>Hello " + msg.tutor + ",</p>" + "<p>This is a 1-hour reminder for your " + msg.subject + " session at " + dayjs(msg.startTimestamp).format("MM/DD/YYYY h:mm a") + ". The zoom link for your session is: "+ msg.vcLink+"</p><p>If you run into any issues, feel free to reply to this email chain for help.</p><p>See you soon,<br>Tut-Tut</p>"
     };
 
     transporter.sendMail(mailOptions, function(error, info) {
@@ -718,6 +725,15 @@ let hourBeforeEmails = cron.schedule('* * * * *', () => {
   });
 }
 });
+
+
+
+
+
+
+// tests
+
+// TESTS
 
 TutorRequest.update({sentReminderEmail : 'false', startTimestamp: {$lt: Date.now() + 3600000}}, {sentReminderEmail: 'true'}, {multi: true},function(err, doc){
   console.log(err);

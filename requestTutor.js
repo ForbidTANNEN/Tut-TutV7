@@ -36,15 +36,15 @@ app.post("/getTutor", function(req, res){
       }, function(err, doc) {
         TutorRequest.findOne({_id: req.body.tableInput}).exec(function(err, tutorRequestInfo){
 
-          console.log("HEREHEHEHEEHE-----"+tutorRequestInfo.sessionGroupId);
+
           if(tutorRequestInfo.sessionGroupId != null){
-            console.log("RUNNNINGGGGGGGG");
+
               TutorRequest.update({$and: [ { sessionGroupId: tutorRequestInfo.sessionGroupId}, { status: "Available" } ]}, {status: "Canceled"}, {multi: true},function(err, doc){
-                  console.log("I DID IT DADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+
               });
 
           }else {
-            console.log("NOTOTOTOTOTOTOTOTOTOTO");
+
           }
           // if(tutorRequestInfo.sessionGroupId)
 
