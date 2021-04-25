@@ -520,7 +520,15 @@ app.get("/aboutUs", function(req, res){
 
 app.get("/admin", function(req, res){
   User.countDocuments({age:{$gt:4,$lt:13}}).exec(function(err, numberOfStudents){
-    res.render("admin", {numberOfStudents: numberOfStudents});
+    User.countDocuments({tutor: true}).exec(function(err, numberOfTutors){
+      TutorRequest.countDocuments({status: "Available"}).exec(function(err, availableSessions){
+        TutorRequest.countDocuments({$and: [{status: "Completed"},{studentName: {$exists:true}},{tutor: {$ne:"Tannen"}}]}).exec(function(err, completedSessions){
+          TutorRequest.countDocuments({$and: [{status: "Completed"},{studentName: {$exists:false}},{tutor: {$ne:"Tannen"}}]}).exec(function(err, expiredSessions){
+      res.render("admin", {numberOfStudents: numberOfStudents, numberOfTutors: numberOfTutors, availableSessions: availableSessions, completedSessions: completedSessions, expiredSessions: expiredSessions});
+    });
+    });
+    });
+    });
   });
 
 });
