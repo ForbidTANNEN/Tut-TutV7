@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- css sheet -->
   <link rel="stylesheet" href="css/tutorView.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 </head>
 
 
@@ -32,6 +35,7 @@
             <button type="submit" class="btn btn-primary shadow">Sign Out</button>
           </form>
         </li>
+
       </ul>
     </div>
   </nav>
@@ -46,7 +50,7 @@
 
         <form class="" action="/addTutorTimeSlot" method="post">
           <div class="form-border">
-            <p>Please only select dates that are greater than today</p>
+            <p>Please only select future dates</p>
               <div class="formTextInput">
                 <div class="DateSelect">
                   <p class="formText">Available Date (PT):</p>
@@ -102,7 +106,7 @@
 
                 <hr class="invHr">
               </div>
-              <h5>Which subjects would you want to tutor:</h5>
+              <h5>Which subjects do you feel comfortable tutoring:</h5>
 
               <div class="formTextInput">
                 <p class="formText">Math:</p>
@@ -132,6 +136,33 @@
   </div>
 </div>
 
+<div class="incentives">
+  <h1>Goals:</h1>
+  <div class="incentivesTable">
+    <p class="incentiveSessionCount1">You have completed:</p>
+    <p class="incentiveSessionCount2"><u><%=completedSessions%></u> sessions!</p>
+    <hr class="incentiveHr">
+    <p class="incentiveSessionCount2">Upcoming Awards:</p>
+    <div class="container tenSessionContainer">
+      <div><p class="tenSessions">10 Sessions</p></div>
+      <div><p class="incentiveArrow">&#8594;</p></div>
+      <div class="menchiesGiftCard">$20 Amazon Giftcard & Laptop Case</div>
+    </div>
+    <div class="container tenSessionContainer">
+      <div><p class="tenSessions">18 Sessions</p></div>
+      <div><p class="incentiveArrow">&#8594;</p></div>
+      <div class="menchiesGiftCard">Letter of appreciation & Menchies giftcards</div>
+    </div>
+    <div class="container tenSessionContainer">
+      <div><p class="tenSessions twentyFiveSessions">25 Sessions</p></div>
+      <div><p class="incentiveArrow twentyFiveSessions">&#8594;</p></div>
+      <div class="menchiesGiftCard">San Marcos School District Signed Certificate of Recognition</div>
+    </div>
+    <hr class="incentiveHr">
+    <p>You will recieve further information on how to claim your award via email, once you pass a milestone.</p>
+  </div>
+
+</div>
 
 
 
@@ -195,6 +226,7 @@
                  </section>
                </div>
 
+               <input type="hidden" class="hasAddress" name="hasAddress" value="<%=hasAddress%>">
 
 
 
@@ -203,7 +235,6 @@
 
 
 
-              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
               <script src="tutorView.js"></script>
 </body>
 

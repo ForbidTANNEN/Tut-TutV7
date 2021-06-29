@@ -38,6 +38,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// query for all emails db.users.find({tutor:true},{username:1,_id:0})
+
 mongoose.connect("mongodb+srv://admin-tannen:Tannen@cluster0-k0mtj.mongodb.net/Main", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -83,7 +85,7 @@ const userSchema = new mongoose.Schema({
   SFname: String,
   SLname: String,
   School: String,
-
+  Address: String,
   guid: String
 
 
@@ -232,6 +234,14 @@ app.get("/TOS-PrivacyPolicy", function(req, res){
 })
 
 
+app.post("/addAddress", function(req, res){
+  console.log(req.body.address);
+  console.log(req.body.id);
+  User.findOneAndUpdate({_id: req.user._id}, {Address: req.body.address}, function(err, doc) {
+    res.redirect("/tutorRequestsView");
+  });
+});
+
 //LOGIN LOGOUT
 
 require("./login.js")(app, User, passport);
@@ -246,6 +256,16 @@ app.get("/tutorRequestsView", function(req, res){
     if(req.user.tutor === true){
 
       TutorRequest.find({tutorID: req.user._id}).sort({importance: 1 ,startTimestamp: 1}).exec(function(err, yourTutorRequests){
+        TutorRequest.countDocuments({tutorID: req.user._id, studentUsername: {$ne : null}}).exec(function(err, completedSessions){
+          User.findOne({_id: req.user._id},{_id:0,accountCreationTime:0}).exec(function(err, userObjectM){
+
+        var hasAddress = false;
+
+        if(userObjectM.Address !== undefined){
+          console.log("NOTTTTT UNDEFINED");
+          hasAddress = true;
+        }
+
 
         var tutorRequestsWithCorrectTime = [];
 
@@ -264,21 +284,9 @@ app.get("/tutorRequestsView", function(req, res){
           }
         });
 
-
-// TEST
-
-// User.findOne({_id: req.user._id}, function(err, foundUser){
-//   console.log("//////////" + foundUser);
-//   foundUser.setPassword("123", function(){
-//     foundUser.save();
-//   });
-// })
-
-
-
-// TEST
-
-        res.render("tutorView", {yourTutorRequests: tutorRequestsWithCorrectTime});
+        res.render("tutorView", {yourTutorRequests: tutorRequestsWithCorrectTime, completedSessions: completedSessions, hasAddress:hasAddress});
+      });
+      });
       });
 
 
@@ -294,6 +302,16 @@ app.get("/tutorRequestsView", function(req, res){
 
   // console.log(dayjs("12-25-1995", "MM-DD-YYYY").valueOf());
 
+});
+
+
+app.post("/groupSessionAccept", function(req, res){
+  console.log("Worked");
+  console.log(req.body.username);
+  User.findOne({username: req.body.username}).exec(function(err, foundUser){
+    var tutorRequest = new TutorRequest({tutor: "Jane", note: "", sentReminderEmail: 'false', vcLink: "https://us04web.zoom.us/j/6497578329?pwd=T0RXeWxtWVRiRXJ6b3VjRmNSZWo0dz09", language: "English", tutorID: "5f3b41a53345bb0004adddbe", tutorEmail: "jane.grumann2023@gmail.com", status: "Booked", startTimestamp: dayjs("2021-06-30-12", "YYYY-MM-DD-H").valueOf(), grade: foundUser.age, importance: 1, studentId: foundUser._id, studentName: foundUser.SFname, studentUsername: foundUser.username, subTopic: "Group Session", subject: "Art"});
+    tutorRequest.save();
+  });
 });
 
 
@@ -519,18 +537,30 @@ app.get("/aboutUs", function(req, res){
 });
 
 app.get("/admin", function(req, res){
+  var name;
+
   User.countDocuments({age:{$gt:4,$lt:13}}).exec(function(err, numberOfStudents){
     User.countDocuments({tutor: true}).exec(function(err, numberOfTutors){
       TutorRequest.countDocuments({status: "Available"}).exec(function(err, availableSessions){
         TutorRequest.countDocuments({$and: [{status: "Completed"},{studentName: {$exists:true}},{tutor: {$ne:"Tannen"}}]}).exec(function(err, completedSessions){
           TutorRequest.countDocuments({$and: [{status: "Completed"},{studentName: {$exists:false}},{tutor: {$ne:"Tannen"}}]}).exec(function(err, expiredSessions){
-      res.render("admin", {numberOfStudents: numberOfStudents, numberOfTutors: numberOfTutors, availableSessions: availableSessions, completedSessions: completedSessions, expiredSessions: expiredSessions});
-    });
-    });
-    });
-    });
-  });
+          User.find({tutor:true}).exec(function(err, allTutors){
+            res.render("admin", {numberOfStudents: numberOfStudents, numberOfTutors: numberOfTutors, availableSessions: availableSessions, completedSessions: completedSessions, expiredSessions: expiredSessions});
+            for(i=0;i<allTutors.length;i++){
+              console.log(allTutors[i].username);
+              name = allTutors[i].username
+              TutorRequest.countDocuments({tutorEmail: allTutors[i].username, studentUsername: {$ne : null}}).exec(function(err, numberOfSessionsPerTutor){
 
+              console.log(numberOfSessionsPerTutor);
+
+            });
+          };
+          });
+          });
+          });
+          });
+          });
+          });
 });
 
 //Request Tutor
@@ -736,9 +766,6 @@ let hourBeforeEmails = cron.schedule('* * * * *', () => {
 
 
 
-
-
-
 // tests
 
 // TESTS
@@ -746,6 +773,26 @@ let hourBeforeEmails = cron.schedule('* * * * *', () => {
 TutorRequest.update({sentReminderEmail : 'false', startTimestamp: {$lt: Date.now() + 3600000}}, {sentReminderEmail: 'true'}, {multi: true},function(err, doc){
   console.log(err);
 });
+});
+
+User.find({username: "Tannenhall@yahoo.com"}, function(err, foundEmails){
+  console.log("EMAILS" + foundEmails);
+  foundEmails.forEach(function(msg){
+    var mailOptions = {
+      from: 'support@tut-tut.org',
+      to: msg.username,
+      subject: 'Tut-Tut Tutoring Summer Fun!',
+      html: "<p style='font-size:3rem'>Hello Parents and Students,</p><br><p>Happy Summer!! We hope you are all doing well, and enjoying your time off from school! We wanted to touch base and fill you in on what’s happening at <a href='https://www.tut-tut.org'>Tut-Tut.org!</a></p><br><p>After meeting with heads of our school districts, we have realized that the pandemic has left a major impact on the young children of our community. Many students have fallen behind academically, and need to catch up before the next school year begins. We are here to help!</p><br><p>Tut-Tut is excited to announce that our <u>free, one-on-one tutoring program</u> is making a comeback this summer! With more tutors than ever, we can help your child catch up, help prepare them for their next grade level curriculum, give them a sneak peek into next year's teachings, or simply keep their academic skills fresh with practice! It’s all <u>FREE</u>, so go to <a href='https://www.tut-tut.org'>Tut-Tut.org!</a> to sign up today!</p><br><p>Also, while you’re there, check out our <b>Summer Fun Sessions</b>! We are excited to announce that we will be offering several group sessions throughout the summer...all entirely focused on having fun!!  Do some arts and crafts, join us for game night or even have fun with some creative writing! Summer Fun Sessions will be posted on Tut-Tut throughout the summer. Our first group session will be happening this wedenesday! It will be a super fun art class, so sign up today as there are limited spots available!</p><br><p>We are super excited to keep our student’s skills fresh for next year!  We can’t wait to see you soon on <a href='https://www.tut-tut.org'>Tut-Tut.org!</a></p><br><p>Have an excellent summer!!!</p><br><p>Tut-Tut.org</p><img style='width:100px;'src='https://www.tut-tut.org/images/train-logo.png'>"
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response + req.body.email);
+      }
+    });
+  });
 });
 
 hourBeforeEmails.start();

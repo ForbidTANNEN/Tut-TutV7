@@ -1,4 +1,43 @@
 
+
+if($(".hasAddress").val() == 'false'){
+  console.log("DOESNT HAVE ADDRESS");
+  doesNotHaveAddress();
+}
+
+function doesNotHaveAddress(zLink) {
+  $.confirm({
+      title: 'Hello!',
+      columnClass: "col-md-12",
+      content: '' +
+      '<form action="/addAddress" method="post" class="formName">' +
+      '<div class="form-group">' +
+      "<label>Tut-Tut has rolled out a new incentive program, that will require us to mail certain prizes and awards to your house! If you don't mind, please input your address below!</label>" +
+      '<input type="text" name="address" placeholder="Address" class="name form-control" required />' +
+
+      '</div>' +
+      '</form>',
+      buttons: {
+          formSubmit: {
+              text: 'Submit',
+              btnClass: 'btn-blue',
+              action: function () {
+                  var name = this.$content.find('.name').val();
+                  if(!name){
+                      alert('provide a valid address');
+                      return false;
+                  }
+                  if(name){
+                    $('.formName').submit();
+                    console.log("SUBMITTED");
+                  }
+
+              }
+          }
+      }
+  });
+}
+
 var coll = document.getElementsByClassName("collapsible");
 var i;
 var clicked = 0;
