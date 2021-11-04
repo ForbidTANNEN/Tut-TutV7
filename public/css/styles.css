@@ -275,6 +275,9 @@ body{
   .honorRole{
     font-size: 1.4rem;
   }
+  .honorRole2{
+    font-size: 1.4rem;
+  }
   .Section2{
     height: 60px !important;
   }
@@ -365,9 +368,9 @@ body{
 
 .Section2{
   height: 100px;
-line-height: 100px;
-text-align: center;
-margin-top: 3%;
+  line-height: 100px;
+  text-align: center;
+  margin-top: 1%;
 }
 
 .tutoringYouCanTrustFooter{
@@ -376,6 +379,12 @@ margin-top: 3%;
 
 .honorRole{
   font-family: 'Montserrat', sans-serif;
+}
+
+.honorRole2{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  color: red;
 }
 
 /* .Section3 {

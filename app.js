@@ -309,7 +309,7 @@ app.post("/groupSessionAccept", function(req, res){
   console.log("Worked");
   console.log(req.body.username);
   User.findOne({username: req.body.username}).exec(function(err, foundUser){
-    var tutorRequest = new TutorRequest({tutor: "Jane", note: "", sentReminderEmail: 'false', vcLink: "https://us04web.zoom.us/j/6497578329?pwd=T0RXeWxtWVRiRXJ6b3VjRmNSZWo0dz09", language: "English", tutorID: "5f3b41a53345bb0004adddbe", tutorEmail: "jane.grumann2023@gmail.com", status: "Booked", startTimestamp: dayjs("2021-06-30-12", "YYYY-MM-DD-H").valueOf(), grade: foundUser.age, importance: 1, studentId: foundUser._id, studentName: foundUser.SFname, studentUsername: foundUser.username, subTopic: "Group Session", subject: "Art"});
+    var tutorRequest = new TutorRequest({tutor: "Jane", note: "", sentReminderEmail: 'false', vcLink: "https://us04web.zoom.us/j/6497578329?pwd=T0RXeWxtWVRiRXJ6b3VjRmNSZWo0dz09", language: "English", tutorID: "5fa3888f76091c000444aefc", tutorEmail: "jane.grumann2023@gmail.com", status: "Booked", startTimestamp: dayjs("2021-06-30-12", "YYYY-MM-DD-H").valueOf(), grade: foundUser.age, importance: 1, studentId: foundUser._id, studentName: foundUser.SFname, studentUsername: foundUser.username, subTopic: "Group Session", subject: "Art"});
     tutorRequest.save();
   });
 });
@@ -775,25 +775,7 @@ TutorRequest.update({sentReminderEmail : 'false', startTimestamp: {$lt: Date.now
 });
 });
 
-User.find({username: "Tannenhall@yahoo.com"}, function(err, foundEmails){
-  console.log("EMAILS" + foundEmails);
-  foundEmails.forEach(function(msg){
-    var mailOptions = {
-      from: 'support@tut-tut.org',
-      to: msg.username,
-      subject: 'Tut-Tut Tutoring Summer Fun!',
-      html: "<p style='font-size:3rem'>Hello Parents and Students,</p><br><p>Happy Summer!! We hope you are all doing well, and enjoying your time off from school! We wanted to touch base and fill you in on what’s happening at <a href='https://www.tut-tut.org'>Tut-Tut.org!</a></p><br><p>After meeting with heads of our school districts, we have realized that the pandemic has left a major impact on the young children of our community. Many students have fallen behind academically, and need to catch up before the next school year begins. We are here to help!</p><br><p>Tut-Tut is excited to announce that our <u>free, one-on-one tutoring program</u> is making a comeback this summer! With more tutors than ever, we can help your child catch up, help prepare them for their next grade level curriculum, give them a sneak peek into next year's teachings, or simply keep their academic skills fresh with practice! It’s all <u>FREE</u>, so go to <a href='https://www.tut-tut.org'>Tut-Tut.org!</a> to sign up today!</p><br><p>Also, while you’re there, check out our <b>Summer Fun Sessions</b>! We are excited to announce that we will be offering several group sessions throughout the summer...all entirely focused on having fun!!  Do some arts and crafts, join us for game night or even have fun with some creative writing! Summer Fun Sessions will be posted on Tut-Tut throughout the summer. Our first group session will be happening this wedenesday! It will be a super fun art class, so sign up today as there are limited spots available!</p><br><p>We are super excited to keep our student’s skills fresh for next year!  We can’t wait to see you soon on <a href='https://www.tut-tut.org'>Tut-Tut.org!</a></p><br><p>Have an excellent summer!!!</p><br><p>Tut-Tut.org</p><img style='width:100px;'src='https://www.tut-tut.org/images/train-logo.png'>"
-    };
 
-    transporter.sendMail(mailOptions, function(error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response + req.body.email);
-      }
-    });
-  });
-});
 
 hourBeforeEmails.start();
 // console.log(new Date());
