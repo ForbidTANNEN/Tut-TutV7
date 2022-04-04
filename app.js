@@ -225,8 +225,8 @@ function CreateGuid() {
 
 
 
-app.get("/notAcceptingTutors", function(req, res){
-  res.render("notAcceptingTutors");
+app.get("/becomeATutor", function(req, res){
+  res.render("becomeATutor");
 });
 
 app.get("/TOS-PrivacyPolicy", function(req, res){
@@ -536,32 +536,32 @@ app.get("/aboutUs", function(req, res){
   res.render("aboutUs");
 });
 
-app.get("/admin", function(req, res){
-  var name;
-
-  User.countDocuments({age:{$gt:4,$lt:13}}).exec(function(err, numberOfStudents){
-    User.countDocuments({tutor: true}).exec(function(err, numberOfTutors){
-      TutorRequest.countDocuments({status: "Available"}).exec(function(err, availableSessions){
-        TutorRequest.countDocuments({$and: [{status: "Completed"},{studentName: {$exists:true}},{tutor: {$ne:"Tannen"}}]}).exec(function(err, completedSessions){
-          TutorRequest.countDocuments({$and: [{status: "Completed"},{studentName: {$exists:false}},{tutor: {$ne:"Tannen"}}]}).exec(function(err, expiredSessions){
-          User.find({tutor:true}).exec(function(err, allTutors){
-            res.render("admin", {numberOfStudents: numberOfStudents, numberOfTutors: numberOfTutors, availableSessions: availableSessions, completedSessions: completedSessions, expiredSessions: expiredSessions});
-            for(i=0;i<allTutors.length;i++){
-              console.log(allTutors[i].username);
-              name = allTutors[i].username
-              TutorRequest.countDocuments({tutorEmail: allTutors[i].username, studentUsername: {$ne : null}}).exec(function(err, numberOfSessionsPerTutor){
-
-              console.log(numberOfSessionsPerTutor);
-
-            });
-          };
-          });
-          });
-          });
-          });
-          });
-          });
-});
+// app.get("/admin", function(req, res){
+//   var name;
+//
+//   User.countDocuments({age:{$gt:4,$lt:13}}).exec(function(err, numberOfStudents){
+//     User.countDocuments({tutor: true}).exec(function(err, numberOfTutors){
+//       TutorRequest.countDocuments({status: "Available"}).exec(function(err, availableSessions){
+//         TutorRequest.countDocuments({$and: [{status: "Completed"},{studentName: {$exists:true}},{tutor: {$ne:"Tannen"}}]}).exec(function(err, completedSessions){
+//           TutorRequest.countDocuments({$and: [{status: "Completed"},{studentName: {$exists:false}},{tutor: {$ne:"Tannen"}}]}).exec(function(err, expiredSessions){
+//           User.find({tutor:true}).exec(function(err, allTutors){
+//             res.render("admin", {numberOfStudents: numberOfStudents, numberOfTutors: numberOfTutors, availableSessions: availableSessions, completedSessions: completedSessions, expiredSessions: expiredSessions});
+//             for(i=0;i<allTutors.length;i++){
+//               console.log(allTutors[i].username);
+//               name = allTutors[i].username
+//               TutorRequest.countDocuments({tutorEmail: allTutors[i].username, studentUsername: {$ne : null}}).exec(function(err, numberOfSessionsPerTutor){
+//
+//               console.log(numberOfSessionsPerTutor);
+//
+//             });
+//           };
+//           });
+//           });
+//           });
+//           });
+//           });
+//           });
+// });
 
 //Request Tutor
 

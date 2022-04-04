@@ -122,7 +122,7 @@
                       <thead>
                         <tr class="headTR">
                           <th>Date</th>
-                          <th>Time (PT)</th>
+                          <th>Time (PACIFIC TIME)</th>
                           <th>Tutor</th>
                           <th>Language</th>
                         </tr>
@@ -163,7 +163,8 @@
           <hr class="invHr">
         </div>
     </div>
-    <button class="submitRequestTutor" id="submitTutorRequestForm" type="submit" name="button">Submit</button>
+    <p><mark>**reminder that all times are in <b>pacific time</b>**<mark></p>
+    <button class="submitRequestTutor" id="submitTutorRequestForm" type="submit" name="button" >Submit</button>
   </form>
 </div>
 </div>
@@ -181,7 +182,7 @@
           <thead>
             <tr class="headTR">
               <th>Date</th>
-              <th>Time (PT)</th>
+              <th>Time (PACIFIC TIME)</th>
               <th>Subject</th>
               <th>Tutor</th>
               <th>Tutor Email</th>
@@ -244,6 +245,7 @@ function zoomLink(zLink) {
       window.location.href = zLink;
   }});
 }
+
 
 function groupSession() {
   $.confirm({
